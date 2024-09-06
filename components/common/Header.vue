@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center bg-primary-50 h-[var(--header-height)] border-b-[1px] border-b-gray-200 dark:bg-primary-950 dark:border-b-gray-800"
+    class="flex items-center bg-primary-50 sticky top-0 z-50 h-[var(--header-height)] border-b-[1px] border-b-gray-200 dark:bg-primary-950 dark:border-b-gray-800"
   >
     <div class="flex justify-between w-full mx-2 my-1">
       <div>
@@ -42,8 +42,8 @@ const toggleColorMode = () => {
 
 const iconColorMode = computed(() => {
   return colorMode.value === "dark"
-    ? "i-heroicons-moon-solid"
-    : "i-heroicons-sun-solid";
+    ? "i-heroicons-sun-solid"
+    : "i-heroicons-moon-solid";
 });
 
 const links = [
