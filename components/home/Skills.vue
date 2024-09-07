@@ -7,7 +7,10 @@
           Backend Developer
         </Typography>
         <div class="flex gap-3 flex-wrap">
-          <div v-for="(tool, index) in backendTools" :key="`backend-${index}`">
+          <div
+            v-for="(tool, index) in skills?.backend"
+            :key="`backend-${index}`"
+          >
             <UiBadge :icon="tool.icon" :label="tool.name" />
           </div>
         </div>
@@ -19,7 +22,7 @@
         </Typography>
         <div class="flex gap-3 flex-wrap">
           <div
-            v-for="(tool, index) in frontendTools"
+            v-for="(tool, index) in skills?.frontend"
             :key="`frontend-${index}`"
           >
             <UiBadge :icon="tool.icon" :label="tool.name" />
@@ -32,7 +35,7 @@
           Extra skills
         </Typography>
         <div class="flex gap-3 flex-wrap">
-          <div v-for="(tool, index) in extraTools" :key="`extra-${index}`">
+          <div v-for="(tool, index) in skills?.extra" :key="`extra-${index}`">
             <UiBadge :icon="tool.icon" :label="tool.name" />
           </div>
         </div>
@@ -42,27 +45,5 @@
 </template>
 
 <script setup lang="ts">
-const backendTools = [
-  { name: "Python", icon: "i-logos-python" },
-  { name: "Django", icon: "i-logos-django-icon" },
-  { name: "Postgresql", icon: "i-logos-postgresql" },
-  { name: "Redis", icon: "i-logos-redis" },
-];
-
-const frontendTools = [
-  { name: "Vue 3", icon: "i-logos-vue" },
-  { name: "Nuxt 3", icon: "i-logos-nuxt-icon" },
-  { name: "Tailwind", icon: "i-logos-tailwindcss-icon" },
-  { name: "HTML", icon: "i-logos-html-5" },
-  { name: "JavaScript", icon: "i-logos-javascript" },
-  { name: "CSS", icon: "i-logos-css-3" },
-  { name: "Typescript", icon: "i-logos-typescript-icon" },
-];
-
-const extraTools = [
-  { name: "Docker", icon: "i-logos-docker-icon" },
-  { name: "Linux", icon: "i-logos-linux-tux" },
-  { name: "Git", icon: "i-logos-git-icon" },
-  { name: "Nginx", icon: "i-logos-nginx" },
-];
+const { data: skills } = await useFetch("/skills");
 </script>

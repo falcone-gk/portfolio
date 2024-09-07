@@ -10,6 +10,17 @@
             {{ item.title }}
           </Typography>
           <p>{{ item.description }}</p>
+          <div
+            class="flex gap-3 flex-wrap mt-2"
+            :class="{ 'justify-end': index % 2 === 0 }"
+          >
+            <UiBadge
+              v-for="(tool, toolIndex) in item.tools"
+              :key="`tool-${index}-${toolIndex}`"
+              :icon="tool.icon"
+              :label="tool.name"
+            />
+          </div>
         </div>
         <div
           class="time text-white bg-primary-400 shadow-[0_0_0_3px] shadow-primary-200 dark:shadow-primary-400 dark:bg-primary-600"
@@ -25,38 +36,7 @@
 </template>
 
 <script setup lang="ts">
-const timelineItems = [
-  {
-    title: "Securitec - Backend Python Developer",
-    description:
-      "Worked through Scrum methodology. Fixed bugs and developed functionalities for Scorecloud such as reports, dashboards, and microservices. Developed multimedia chatbots for various platforms. Used Celery and Redis for queuing report downloads, and updated PostgreSQL queries.",
-    date: "Apr 2023 - Sep 2023",
-  },
-  {
-    title: "Edukar Forum - Web Developer",
-    description:
-      "Updated the Edukar website with Frontend in Vue 3 and Backend in Django Rest Framework. Used Redis and Celery for background tasks. Set up deployment with Linux, Nginx, and Docker, splitting the frontend on the main domain and the API on a subdomain.",
-    date: "Sep 2022 - Dec 2022",
-  },
-  {
-    title: "Visage - Consultant Intern",
-    description:
-      "Cleaned, processed, and analyzed AirPak's data using Python. Built a predictive model for product purchases. Configured an AWS EC2 instance for training the model and participated in progress presentations to the company.",
-    date: "May 2021 - Sep 2021",
-  },
-  {
-    title: "Edukar Forum - Web Developer",
-    description:
-      "Developed Edukar's website using Django and deployed it using Docker, Gunicorn, and Nginx on a Linux server. Provided maintenance and updates to the website. Project available at aedukar.com.",
-    date: "Apr 2021 - Sep 2021",
-  },
-  {
-    title: "HackSpace - Freelancer",
-    description:
-      "Maintained course notebooks and compiled theoretical material. Taught introductory sessions on Python and Pandas, and led study groups for enrolled students.",
-    date: "May 2020 - Aug 2020",
-  },
-];
+const { data: timelineItems } = await useFetch("/experience");
 </script>
 
 <style scoped>
