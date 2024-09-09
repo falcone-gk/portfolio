@@ -6,17 +6,25 @@
       <div>
         <p>Logo</p>
       </div>
-      <div class="flex gap-8">
-        <nav class="flex items-center">
+      <div class="flex md:gap-8">
+        <nav class="hidden md:flex items-center">
           <ul class="space-x-8">
-            <li class="inline-flex" v-for="link in links">
-              <p>{{ link.text }}</p>
+            <li class="inline-flex" v-for="link in links[0]">
+              <p>{{ link.label }}</p>
             </li>
           </ul>
         </nav>
         <div>
+          <UButton
+            class="md:hidden"
+            icon="i-heroicons-bars-3"
+            @click="isOpen = !isOpen"
+            color="gray"
+            variant="ghost"
+          />
           <ColorScheme>
             <UButton
+              class="hidden md:flex"
               :icon="iconColorMode"
               @click="toggleColorMode"
               color="gray"
@@ -25,12 +33,14 @@
           </ColorScheme>
         </div>
       </div>
+      <CommonMobileNav :links="links" v-model:open="isOpen" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const colorMode = useColorMode();
+const isOpen = ref(false);
 
 const toggleColorMode = () => {
   const colorSwitcher = {
@@ -47,9 +57,13 @@ const iconColorMode = computed(() => {
 });
 
 const links = [
-  { text: "About", section: "about" },
-  { text: "Experience", section: "experience" },
-  { text: "Projects", section: "projects" },
-  { text: "Contact", section: "contact" },
+  [
+    { label: "Home", section: "home", to: "/" },
+    { label: "About", section: "about" },
+    { label: "Experience", section: "experience" },
+    { label: "Projects", section: "projects" },
+    { label: "Contact", section: "contact" },
+  ],
+  [{ label: "Dark mode", icon: "i-heroicons-moon-solid", input: true }],
 ];
 </script>

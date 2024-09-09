@@ -12,7 +12,7 @@
           <p>{{ item.description }}</p>
           <div
             class="flex gap-3 flex-wrap mt-2"
-            :class="{ 'justify-end': index % 2 === 0 }"
+            :class="{ 'md:justify-end': index % 2 === 0 }"
           >
             <UiBadge
               v-for="(tool, toolIndex) in item.tools"
