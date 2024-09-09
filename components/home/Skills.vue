@@ -8,7 +8,7 @@
         </Typography>
         <div class="flex gap-3 flex-wrap">
           <div
-            v-for="(tool, index) in skills?.backend"
+            v-for="(tool, index) in skills.backend"
             :key="`backend-${index}`"
           >
             <UiBadge :icon="tool.icon" :label="tool.name" />
@@ -22,7 +22,7 @@
         </Typography>
         <div class="flex gap-3 flex-wrap">
           <div
-            v-for="(tool, index) in skills?.frontend"
+            v-for="(tool, index) in skills.frontend"
             :key="`frontend-${index}`"
           >
             <UiBadge :icon="tool.icon" :label="tool.name" />
@@ -35,7 +35,7 @@
           Extra skills
         </Typography>
         <div class="flex gap-3 flex-wrap">
-          <div v-for="(tool, index) in skills?.extra" :key="`extra-${index}`">
+          <div v-for="(tool, index) in skills.extra" :key="`extra-${index}`">
             <UiBadge :icon="tool.icon" :label="tool.name" />
           </div>
         </div>
@@ -45,5 +45,16 @@
 </template>
 
 <script setup lang="ts">
-const { data: skills } = await useFetch("/skills");
+import type { DevSkills } from "~/types";
+
+const { data } = await useFetch("/skills");
+const skills = computed<DevSkills>(() => {
+  return (
+    data.value || {
+      backend: [],
+      frontend: [],
+      extra: [],
+    }
+  );
+});
 </script>

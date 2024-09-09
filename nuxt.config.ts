@@ -7,4 +7,7 @@ export default defineNuxtConfig({
   ui: {
     icons: ["logos"],
   },
+  imports: {
+    dirs: ["types/*.d.ts"],
+  },
 });
