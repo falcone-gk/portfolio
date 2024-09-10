@@ -5,7 +5,7 @@
         v-for="(item, index) in timelineItems"
         class="before:shadow-[0_0_0_3px] before:bg-primary-400 before:shadow-primary-200 dark:shadow-primary-400 dark:before:bg-primary-600"
       >
-        <div class="content">
+        <div ref="itemsContent" :data-index="index" class="content opacity-0">
           <Typography tag="h3" variant="h3" color="gray">
             {{ item.title }}
           </Typography>
@@ -23,7 +23,9 @@
           </div>
         </div>
         <div
-          class="time text-white bg-primary-400 shadow-[0_0_0_3px] shadow-primary-200 dark:shadow-primary-400 dark:bg-primary-600"
+          ref="itemsContent"
+          :data-index="index + 1"
+          class="opacity-0 time text-white bg-primary-400 shadow-[0_0_0_3px] shadow-primary-200 dark:shadow-primary-400 dark:bg-primary-600"
         >
           <Typography tag="h3" color="gray">
             {{ item.date }}
@@ -37,9 +39,75 @@
 
 <script setup lang="ts">
 const { data: timelineItems } = await useFetch("/experience");
+const contentRefs = useTemplateRef<HTMLElement[]>("itemsContent");
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement;
+          if (!target.dataset.index) return;
+          const elementIndex = Number(target.dataset.index);
+          if (elementIndex % 2 === 0) {
+            entry.target.classList.add("show-from-left");
+          } else {
+            entry.target.classList.add("show-from-right");
+          }
+        }
+      });
+    },
+    {
+      threshold: 0.9,
+    },
+  );
+  if (contentRefs.value) {
+    contentRefs.value.map((el) => {
+      observer.observe(el);
+    });
+  }
+});
 </script>
 
 <style scoped>
+/* animation for each timeline item */
+.show-from-left {
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-name: show-from-left;
+}
+
+@keyframes show-from-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.show-from-right {
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-name: show-from-right;
+}
+
+@keyframes show-from-right {
+  0% {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* timeline style */
 .timeline {
   position: relative;
   margin: 50px auto;
@@ -126,12 +194,17 @@ const { data: timelineItems } = await useFetch("/experience");
   padding: 8px 16px;
   border-radius: 18px;
 }
+
+/* media queries */
 @media (max-width: 1000px) {
   .timeline {
     width: 100%;
   }
 }
 @media (max-width: 767px) {
+  .show-from-left {
+    animation-name: show-from-right;
+  }
   .timeline {
     width: 100%;
     padding-bottom: 0;

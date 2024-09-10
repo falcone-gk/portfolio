@@ -39,7 +39,7 @@ const props = defineProps({
   },
 });
 
-const mySection = ref(null);
+const mySection = ref<HTMLElement | null>(null);
 onMounted(() => {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -81,6 +81,5 @@ onMounted(() => {
 
 .show {
   opacity: 0;
-  transform: translateY(40px);
 }
 </style>
