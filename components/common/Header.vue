@@ -9,8 +9,8 @@
       <div class="flex md:gap-8">
         <nav class="hidden md:flex items-center">
           <ul class="space-x-8">
-            <li class="inline-flex" v-for="link in links[0]">
-              <p>{{ link.label }}</p>
+            <li class="inline-flex" v-for="link in navLinks">
+              <NuxtLink :to="link.to">{{ link.label }}</NuxtLink>
             </li>
           </ul>
         </nav>
@@ -56,14 +56,29 @@ const iconColorMode = computed(() => {
     : "i-heroicons-moon-solid";
 });
 
+const navLinks = [
+  { label: "Home", section: "home", to: "/" },
+  {
+    label: "Skills",
+    section: "skills",
+    to: { path: "/", hash: "#skills" },
+  },
+  // { label: "About", section: "about", to: "/" },
+  {
+    label: "Experience",
+    section: "experience",
+    to: { path: "/", hash: "#experience" },
+  },
+  {
+    label: "Projects",
+    section: "projects",
+    to: { path: "/", hash: "#projects" },
+  },
+  { label: "Contact", section: "contact", to: { path: "/", hash: "#contact" } },
+];
+
 const links = [
-  [
-    { label: "Home", section: "home", to: "/" },
-    { label: "About", section: "about" },
-    { label: "Experience", section: "experience" },
-    { label: "Projects", section: "projects" },
-    { label: "Contact", section: "contact" },
-  ],
+  navLinks,
   [{ label: "Dark mode", icon: "i-heroicons-moon-solid", input: true }],
 ];
 </script>

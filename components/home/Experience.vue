@@ -3,7 +3,7 @@
     <ul>
       <li
         v-for="(item, index) in timelineItems"
-        class="before:shadow-[0_0_0_3px] before:bg-primary-400 before:shadow-primary-200 dark:shadow-primary-400 dark:before:bg-primary-600"
+        class="mb-20 before:shadow-[0_0_0_3px] before:bg-primary-400 before:shadow-primary-200 dark:shadow-primary-400 dark:before:bg-primary-600"
       >
         <div ref="itemsContent" :data-index="index" class="content opacity-0">
           <Typography tag="h3" variant="h3" color="gray">

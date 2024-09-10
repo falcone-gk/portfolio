@@ -10,4 +10,9 @@ export default defineNuxtConfig({
   imports: {
     dirs: ["types/*.d.ts"],
   },
+  router: {
+    options: {
+      scrollBehaviorType: "smooth",
+    },
+  },
 });

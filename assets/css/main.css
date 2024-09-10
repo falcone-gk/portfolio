@@ -1,3 +1,12 @@
 :root {
   --header-height: 3.5rem;
 }
+
+.home-section-h2::before {
+  display: block;
+  content: " ";
+  margin-top: -200px;
+  height: 200px;
+  visibility: hidden;
+  pointer-events: none;
+}
