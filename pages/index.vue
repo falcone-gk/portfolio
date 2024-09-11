@@ -1,5 +1,14 @@
 <template>
   <div class="space-y-36">
+    <HomeSection
+      title="About Me"
+      id="about"
+      transition
+      class="flex flex-col mx-auto max-w-[900px]"
+    >
+      <HomeAbout />
+    </HomeSection>
+
     <HomeSection title="Skills" id="skills" transition>
       <HomeSkills />
     </HomeSection>

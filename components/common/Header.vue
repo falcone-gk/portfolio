@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center bg-primary-50 sticky top-0 z-50 h-[var(--header-height)] border-b-[1px] border-b-gray-200 dark:bg-primary-950 dark:border-b-gray-800"
+    class="flex items-center bg-gray-50 sticky top-0 z-50 h-[var(--header-height)] border-b-[1px] border-b-gray-200 dark:bg-gray-950 dark:border-b-gray-800"
   >
     <div class="flex justify-between w-full mx-2 my-1">
       <div>
@@ -57,24 +57,42 @@ const iconColorMode = computed(() => {
 });
 
 const navLinks = [
-  { label: "Home", section: "home", to: "/" },
+  {
+    label: "Home",
+    section: "home",
+    to: "/",
+    click: () => (isOpen.value = false),
+  },
+  {
+    label: "About",
+    section: "about",
+    to: { path: "/", hash: "#about" },
+    click: () => (isOpen.value = false),
+  },
   {
     label: "Skills",
     section: "skills",
     to: { path: "/", hash: "#skills" },
+    click: () => (isOpen.value = false),
   },
-  // { label: "About", section: "about", to: "/" },
   {
     label: "Experience",
     section: "experience",
     to: { path: "/", hash: "#experience" },
+    click: () => (isOpen.value = false),
   },
   {
     label: "Projects",
     section: "projects",
     to: { path: "/", hash: "#projects" },
+    click: () => (isOpen.value = false),
   },
-  { label: "Contact", section: "contact", to: { path: "/", hash: "#contact" } },
+  {
+    label: "Contact",
+    section: "contact",
+    to: { path: "/", hash: "#contact" },
+    click: () => (isOpen.value = false),
+  },
 ];
 
 const links = [

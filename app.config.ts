@@ -1,6 +1,6 @@
 export default defineAppConfig({
   ui: {
-    primary: "java",
-    gray: "cool",
+    primary: "customPrimary",
+    gray: "customGray",
   },
 });
