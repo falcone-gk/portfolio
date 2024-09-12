@@ -57,7 +57,7 @@ const variantClasses = computed(() => {
     h3: "text-lg font-bold sm:text-xl md:text-2xl",
     big: "text-xl font-bold",
     bigger: "text-[2.50rem] font-bold md:text-[3.25rem]",
-    biggest: "text-[6.25rem] font-bold md:text-[7.25rem]",
+    biggest: "font-bold text-[4.25rem] lg:text-[6.25rem]",
     body: "text-base",
     small: "text-sm",
     smaller: "text-xs",

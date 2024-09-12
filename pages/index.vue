@@ -1,5 +1,9 @@
 <template>
   <div class="space-y-36">
+    <HomeSection class="mt-12 md:mt-0" id="hero">
+      <HomeStart />
+    </HomeSection>
+
     <HomeSection
       title="About Me"
       id="about"
