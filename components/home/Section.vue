@@ -4,7 +4,7 @@
     class="flex flex-col justify-center min-h-[calc(100vh-var(--header-height))]"
     :class="{ ['show']: props.transition }"
   >
-    <section class="home-section">
+    <section>
       <Typography
         class="home-section-h2"
         :id="props.id"

@@ -63,36 +63,36 @@ const navLinks = [
     to: "/",
     click: () => (isOpen.value = false),
   },
-  {
-    label: "About",
-    section: "about",
-    to: { path: "/", hash: "#about" },
-    click: () => (isOpen.value = false),
-  },
-  {
-    label: "Skills",
-    section: "skills",
-    to: { path: "/", hash: "#skills" },
-    click: () => (isOpen.value = false),
-  },
-  {
-    label: "Experience",
-    section: "experience",
-    to: { path: "/", hash: "#experience" },
-    click: () => (isOpen.value = false),
-  },
-  {
-    label: "Projects",
-    section: "projects",
-    to: { path: "/", hash: "#projects" },
-    click: () => (isOpen.value = false),
-  },
-  {
-    label: "Contact",
-    section: "contact",
-    to: { path: "/", hash: "#contact" },
-    click: () => (isOpen.value = false),
-  },
+  // {
+  //   label: "About",
+  //   section: "about",
+  //   to: { path: "/", hash: "#about" },
+  //   click: () => (isOpen.value = false),
+  // },
+  // {
+  //   label: "Skills",
+  //   section: "skills",
+  //   to: { path: "/", hash: "#skills" },
+  //   click: () => (isOpen.value = false),
+  // },
+  // {
+  //   label: "Experience",
+  //   section: "experience",
+  //   to: { path: "/", hash: "#experience" },
+  //   click: () => (isOpen.value = false),
+  // },
+  // {
+  //   label: "Projects",
+  //   section: "projects",
+  //   to: { path: "/", hash: "#projects" },
+  //   click: () => (isOpen.value = false),
+  // },
+  // {
+  //   label: "Contact",
+  //   section: "contact",
+  //   to: { path: "/", hash: "#contact" },
+  //   click: () => (isOpen.value = false),
+  // },
 ];
 
 const links = [

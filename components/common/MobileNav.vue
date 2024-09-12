@@ -10,12 +10,15 @@
   >
     <UCard
       class="h-full"
-      :ui="{ base: 'flex flex-col', footer: { base: 'mt-auto' } }"
+      :ui="{
+        base: 'flex flex-col',
+        background: 'bg-gray-50 dark:bg-gray-950',
+      }"
     >
       <UVerticalNavigation
         :links="props.links"
         :ui="{
-          active: 'before:bg-primary-200 dark:before:bg-primary-500',
+          active: 'before:bg-primary-300 dark:before:bg-primary-500',
         }"
       >
         <template #badge="{ link }">
