@@ -25,7 +25,12 @@
       <HomeProjects />
     </HomeSection>
 
-    <HomeSection title="Contact" id="contact" is-center>
+    <HomeSection
+      class="flex mx-auto max-w-[700px]"
+      title="Contact"
+      id="contact"
+      is-center
+    >
       <HomeContact />
     </HomeSection>
   </div>
