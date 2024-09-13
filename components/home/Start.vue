@@ -18,7 +18,7 @@
           achieving high quality projects, to the expectations of my client.
         </Typography>
         <div class="flex gap-8 items-center">
-          <UButton label="Download CV" size="xl" />
+          <UButton @click="downloadCV" label="Download CV" size="xl" />
           <UButton
             size="xl"
             label="Contact"
@@ -34,6 +34,16 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const downloadCV = () => {
+  const link = document.createElement("a");
+  link.href = "/files/cv_enzo_falcon.pdf";
+  link.download = "CV_Enzo_Falcon.pdf";
+  link.target = "_blank";
+  link.click();
+};
+</script>
 
 <style scoped>
 img {

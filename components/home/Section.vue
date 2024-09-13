@@ -3,11 +3,11 @@
     ref="mySection"
     class="flex flex-col justify-center min-h-[calc(100vh-var(--header-height))]"
     :class="{ ['show']: props.transition }"
+    :id="props.id"
   >
     <section>
       <Typography
         class="home-section-h2"
-        :id="props.id"
         tag="h2"
         variant="bigger"
         :class="{ 'text-center': props.isCenter }"

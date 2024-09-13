@@ -6,6 +6,9 @@
         <slot />
       </main>
     </UContainer>
-    <CommonFooter />
+    <div class="mx-12">
+      <UDivider class="mt-8" />
+      <CommonFooter />
+    </div>
   </div>
 </template>
