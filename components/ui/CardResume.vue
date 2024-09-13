@@ -1,9 +1,13 @@
 <template>
   <UCard
     :ui="{
+      base: 'flex flex-col',
       header: {
         base: 'h-48',
         padding: '',
+      },
+      footer: {
+        base: 'mt-auto',
       },
     }"
   >
@@ -22,6 +26,10 @@
     <div>
       <p>{{ props.description }}</p>
     </div>
+
+    <template v-if="slots.customFooter" #footer>
+      <slot name="customFooter"></slot>
+    </template>
   </UCard>
 </template>
 
@@ -31,4 +39,6 @@ const props = defineProps<{
   description: string;
   imageUrl: string;
 }>();
+
+const slots = useSlots();
 </script>
