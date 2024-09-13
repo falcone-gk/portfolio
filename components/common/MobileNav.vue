@@ -18,7 +18,7 @@
       <UVerticalNavigation
         :links="props.links"
         :ui="{
-          active: 'before:bg-primary-300 dark:before:bg-primary-500',
+          active: 'before:bg-gray-200 dark:before:bg-gray-500',
         }"
       >
         <template #badge="{ link }">
