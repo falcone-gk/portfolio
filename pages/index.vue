@@ -35,3 +35,15 @@
     </HomeSection>
   </div>
 </template>
+
+<script setup lang="ts">
+useSeoMeta({
+  title: "Enzo Falcon",
+  description:
+    "Portfolio website to show my skills, projects, work experience and blog content.",
+  ogTitle: "Enzo Falcon",
+  ogDescription:
+    "Portfolio website to show my skills, projects, work experience and blog content.",
+  ogLocale: "es",
+});
+</script>
