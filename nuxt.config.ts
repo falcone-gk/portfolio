@@ -20,4 +20,7 @@ export default defineNuxtConfig({
       scrollBehaviorType: "smooth",
     },
   },
+  hub: {
+    database: true,
+  },
 });
