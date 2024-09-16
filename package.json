@@ -7,11 +7,13 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
     "@nuxt/ui": "^2.18.4",
-    "@nuxthub/core": "^0.7.16",
+    "@nuxthub/core": "^0.7.17",
+    "drizzle-orm": "^0.33.0",
     "nuxt": "^3.13.2",
     "vue": "latest",
     "vue-router": "latest",
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "@iconify-json/logos": "^1.2.0",
+    "drizzle-kit": "^0.24.2",
     "wrangler": "^3.78.2"
   },
   "packageManager": "pnpm@9.10.0+sha512.73a29afa36a0d092ece5271de5177ecbf8318d454ecd701343131b8ebc0c1a91c487da46ab77c8e596d6acf1461e3594ced4becedf8921b074fbd8653ed7051c"
