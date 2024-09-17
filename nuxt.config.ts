@@ -8,6 +8,19 @@ export default defineNuxtConfig({
       postmailToken: process.env.POSTMAIL_TOKEN,
     },
   },
+  $development: {
+    runtimeConfig: {
+      basicAuth: {
+        enabled: true,
+        username: "admin",
+        password:
+          "$2y$10$sa7YxQ33oAv8VLaBW.O19uhbRmTC2mX8Jmuv3RCK18s51MunbH1Z2",
+      },
+    },
+    // hub: {
+    //   remote: true,
+    // },
+  },
   css: ["~/assets/css/main.css"],
   ui: {
     icons: ["logos"],
