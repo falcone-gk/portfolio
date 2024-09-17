@@ -44,14 +44,27 @@ const state = reactive({
   password: "",
 });
 
-const { execute } = useLazyFetch("/api/auth/login", {
+const { data, execute } = useLazyFetch("/api/auth/login", {
   method: "POST",
   immediate: false,
   watch: false,
   body: state,
 });
 
+const route = useRoute();
 const submitLogin = async () => {
   await execute();
+
+  if (data.value) {
+    const nextPage = route.query.next ? route.query.next : "/admin";
+    navigateTo(nextPage as string, { replace: true });
+  } else {
+    form.value?.setErrors([
+      {
+        message: "Wrong credentials.",
+        path: "password",
+      },
+    ]);
+  }
 };
 </script>

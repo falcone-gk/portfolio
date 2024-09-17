@@ -16,6 +16,11 @@ export default defineEventHandler(async (event) => {
   const { username, password } = config.basicAuth;
 
   if (data.username === username && data.password === password) {
+    setCookie(event, "token", password, {
+      maxAge: 60 * 60 * 24,
+      sameSite: "strict",
+    });
+
     const session = await useSession(event, {
       name: "session",
       password: password,
@@ -24,14 +29,13 @@ export default defineEventHandler(async (event) => {
         secure: true,
         sameSite: "strict",
       },
-      maxAge: 60 * 60 * 24,
+      maxAge: 60 * 60,
     });
 
     await session.update({
+      username: username,
       isAdmin: true,
     });
-
-    console.log("login:", session.data);
 
     return {
       status: "success",
