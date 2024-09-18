@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
-  modules: ["@nuxt/ui", "@nuxthub/core"],
+  modules: ["@nuxt/ui", "@nuxthub/core", "@nuxtjs/mdc"],
   runtimeConfig: {
     public: {
       postmailToken: process.env.POSTMAIL_TOKEN,
@@ -28,6 +28,9 @@ export default defineNuxtConfig({
   imports: {
     dirs: ["types/*.d.ts"],
   },
+  routeRules: {
+    "/admin/**": { ssr: false },
+  },
   router: {
     options: {
       scrollBehaviorType: "smooth",
@@ -35,5 +38,11 @@ export default defineNuxtConfig({
   },
   hub: {
     database: true,
+  },
+  mdc: {
+    highlight: {
+      highlighter: "shiki",
+      langs: ["vue", "ts", "js", "py"],
+    },
   },
 });

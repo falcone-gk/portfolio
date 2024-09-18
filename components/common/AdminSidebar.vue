@@ -17,14 +17,21 @@
 </template>
 
 <script setup lang="ts">
-const links = [
+const adminLinks = [
   {
-    label: "Admin",
-    icon: "i-heroicons-wrench-screwdriver-solid",
+    label: "Dashboard",
+    icon: "i-heroicons-presentation-chart-bar-solid",
     to: "/admin",
+    exact: true,
   },
-  { label: "Posts", icon: "i-heroicons-pencil-solid" },
+  { label: "Posts", icon: "i-heroicons-pencil-solid", to: "/admin/posts" },
+  { label: "Tags", icon: "i-heroicons-tag-solid", to: "/admin/tags" },
+];
+
+const publicLinks = [
   { label: "Home", icon: "i-heroicons-home-solid", to: "/" },
   { label: "Blog", icon: "i-heroicons-book-open-solid", to: "/blog" },
 ];
+
+const links = [adminLinks, publicLinks];
 </script>

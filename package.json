@@ -13,6 +13,7 @@
   "dependencies": {
     "@nuxt/ui": "^2.18.4",
     "@nuxthub/core": "^0.7.17",
+    "@nuxtjs/mdc": "^0.9.0",
     "drizzle-orm": "^0.33.0",
     "nuxt": "^3.13.2",
     "vue": "latest",
