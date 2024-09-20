@@ -44,9 +44,9 @@
       class="flex"
       @submit="onAddNewTag"
     >
-      <UFormGroup label="New tag" name="tag">
+      <UFormGroup label="New tag" name="tag" required>
         <div class="flex gap-2">
-          <UInput v-model="state.tag" required />
+          <UInput v-model="state.tag" />
           <UButton
             type="submit"
             label="Add new tag"

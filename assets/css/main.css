@@ -21,10 +21,8 @@
 .line.diff.remove::before {
   content: "-";
   color: #c23a3a;
-  position: absolute;
 }
 .line.diff.add::before {
   content: "+";
   color: #23b73c;
-  position: absolute;
 }

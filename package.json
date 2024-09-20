@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "db:drop-migration": "drizzle-kit drop"
   },
   "dependencies": {
     "@nuxt/ui": "^2.18.4",

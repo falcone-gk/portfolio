@@ -14,8 +14,6 @@
 </template>
 
 <script setup lang="ts">
-import type { Typography } from "#build/components";
-
 definePageMeta({
   middleware: ["auth", "title"],
   layout: "admin",

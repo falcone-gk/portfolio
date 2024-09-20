@@ -15,3 +15,16 @@ export interface Experience {
   date: string;
   tools: Skill[];
 }
+
+export interface Tag {
+  id: number;
+  name: string;
+}
+
+export interface Post {
+  title: string;
+  description: string;
+  tags: Tag[];
+  body: string;
+  isPublished: boolean;
+}

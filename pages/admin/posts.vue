@@ -1,14 +1,15 @@
 <template>
-  <div class="w-full flex">
-    <div class="flex-grow">
-      <UTextarea :rows="40" class="h-full" v-model="content" />
+  <div
+    class="min-h-[49px] flex-shrink-0 flex items-center border-b border-gray-200 dark:border-gray-800 gap-x-4 py-0 px-1.5 overflow-x-auto"
+  >
+    <div class="flex items-center flex-1 gap-x-1.5">
+      <UHorizontalNavigation
+        :links="postLinks"
+        class="border-b border-gray-200 dark:border-gray-800"
+      />
     </div>
-    <MDC v-slot="{ data, body }" :value="content">
-      <article class="overflow-y-scroll p-4 prose prose-invert bg-gray-900">
-        <MDCRenderer v-if="body" :body="body" :data="data" />
-      </article>
-    </MDC>
   </div>
+  <NuxtPage />
 </template>
 
 <script setup lang="ts">
@@ -16,31 +17,8 @@ definePageMeta({
   title: "Posts",
 });
 
-const examples = {
-  default: `---
-title: Sam
----
-
-# Simple
-
-Simple paragraph
-
-Inline code \`const codeInline: string = 'highlighted code inline'\`{lang="ts"} can be contained in paragraphs.
-
-Code block:
-\`\`\`typescript[filename]{1,3-5}meta
-import { parseMarkdown } from '@nuxtjs/mdc/runtime'
-
-async function main(mdc: string) {
-  const ast = await parseMarkdown(mdc)
-  // Do your magic with parsed AST tree
-
-  return ast // [!code ++]
-  return ast // [!code --]
-}
-\`\`\`
-`,
-};
-
-const content = ref(examples.default);
+const postLinks = [
+  { label: "Post list", to: "/admin/posts/", exact: true },
+  { label: "Create Post", to: "/admin/posts/create" },
+];
 </script>

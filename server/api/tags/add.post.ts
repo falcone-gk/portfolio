@@ -10,13 +10,17 @@ export default defineEventHandler(async (event) => {
     throw createError({
       status: 400,
       statusMessage: "Bad request",
-      message: "Invalid input body",
+      message: JSON.stringify(body.error.issues),
     });
   }
 
-  const newTag = await useDrizzle().insert(tables.tag).values({
+  await useDrizzle().insert(tables.tag).values({
     name: body.data.tag,
   });
 
-  return newTag;
+  setResponseStatus(event, 201);
+  return {
+    status: "success",
+    message: "Tag created successfully",
+  };
 });

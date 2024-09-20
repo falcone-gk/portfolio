@@ -1,0 +1,1 @@
+ALTER TABLE `posts` ADD `slug` text DEFAULT '' NOT NULL;
