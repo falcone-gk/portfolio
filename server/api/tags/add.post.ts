@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
   if (!body.success) {
     throw createError({
       status: 400,
-      statusMessage: "Bad request",
+      statusMessage: "Validation Error",
       message: JSON.stringify(body.error.issues),
     });
   }
