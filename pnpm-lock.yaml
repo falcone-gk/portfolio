@@ -23,6 +23,9 @@ importers:
       nuxt:
         specifier: ^3.13.2
         version: 3.13.2(@parcel/watcher@2.4.1)(@types/node@22.5.5)(drizzle-orm@0.33.0(@cloudflare/workers-types@4.20240909.0))(ioredis@5.4.1)(magicast@0.3.5)(rollup@4.21.3)(terser@5.32.0)(vite@5.4.5(@types/node@22.5.5)(terser@5.32.0))
+      nuxt-shiki:
+        specifier: ^0.3.0
+        version: 0.3.0(magicast@0.3.5)(rollup@4.21.3)
       vue:
         specifier: latest
         version: 3.5.6
@@ -3695,6 +3698,9 @@ packages:
     resolution: {integrity: sha512-yAgpxBcIB2/DWL7dWRZOQa5ULLZQ4AWgYdqtUDbeOZ3KxmY/+fqm8/UJuU7QK81JrccNaZeSI+GLe5BY7RR3cQ==}
     engines: {node: ^16.10.0 || >=18.0.0}
     hasBin: true
+
+  nuxt-shiki@0.3.0:
+    resolution: {integrity: sha512-edeP230QQmQ02PdquCjE0noM8+RNTrpjJk1pfR1tIJ5gBp1DegzTe4WdFUWXu7sjSiIndfDy2KbQ9SPscGROJw==}
 
   nuxt@3.13.2:
     resolution: {integrity: sha512-Bjc2qRsipfBhjXsBEJCN+EUAukhdgFv/KoIR5HFB2hZOYRSqXBod3oWQs78k3ja1nlIhAEdBG533898KJxUtJw==}
@@ -9060,6 +9066,18 @@ snapshots:
   nuxi@3.13.2:
     optionalDependencies:
       fsevents: 2.3.3
+
+  nuxt-shiki@0.3.0(magicast@0.3.5)(rollup@4.21.3):
+    dependencies:
+      '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.21.3)
+      knitwork: 1.1.0
+      shiki: 1.17.7
+      unwasm: 0.3.9
+    transitivePeerDependencies:
+      - magicast
+      - rollup
+      - supports-color
+      - webpack-sources
 
   nuxt@3.13.2(@parcel/watcher@2.4.1)(@types/node@22.5.5)(drizzle-orm@0.33.0(@cloudflare/workers-types@4.20240909.0))(ioredis@5.4.1)(magicast@0.3.5)(rollup@4.21.3)(terser@5.32.0)(vite@5.4.5(@types/node@22.5.5)(terser@5.32.0)):
     dependencies:
