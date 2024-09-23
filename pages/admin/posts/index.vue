@@ -14,7 +14,12 @@
         </UTooltip>
 
         <UTooltip text="Edit post">
-          <UButton size="xs" icon="i-heroicons-pencil-solid" color="gray" />
+          <UButton
+            size="xs"
+            icon="i-heroicons-pencil-solid"
+            color="gray"
+            :to="`/admin/posts/edit/${row.id}`"
+          />
         </UTooltip>
 
         <UTooltip text="Delete post">

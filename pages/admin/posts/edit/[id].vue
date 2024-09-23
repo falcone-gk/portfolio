@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 py-6 w-full flex flex-col lg:flex-row gap-4">
+  <div v-if="post" class="px-4 py-6 w-full flex flex-col lg:flex-row gap-4">
     <div class="flex-grow">
       <UForm
         :state="dataBody"
@@ -50,8 +50,8 @@
         <div class="flex justify-between">
           <UButton
             type="submit"
-            label="Create post"
-            :loading="newPostStatus === 'pending'"
+            label="Save post"
+            :loading="savedPostStatus === 'pending'"
           />
         </div>
       </UForm>
@@ -68,32 +68,27 @@
 import type { Post } from "~/types";
 import { postSchema } from "~/schemas";
 
-const { data: tags } = useLazyFetch("/api/tags");
+const { data: tags } = await useFetch("/api/tags");
 
-const template = `# Simple
-
-Simple paragraph
-
-Inline code \`const codeInline: string = 'highlighted code inline'\`{lang="ts"} can be contained in paragraphs.
-
-Code block:
-\`\`\`typescript[filename]{1,3-5}meta
-import { parseMarkdown } from '@nuxtjs/mdc/runtime'
-
-async function main(mdc: string) {
-  const ast = await parseMarkdown(mdc)
-  // Do your magic with parsed AST tree
-
-  return ast // [!code ++]
-  return ast // [!code --]
-}
-\`\`\``;
 const state = reactive<Post>({
   title: "",
   description: "",
   tags: [],
-  body: template,
+  body: "",
   isPublished: false,
+});
+
+const route = useRoute();
+const { data: post } = useLazyFetch(`/api/posts/${route.params.id}`, {
+  server: false,
+  onResponse: ({ response }) => {
+    const data = response._data;
+    state.title = data.title;
+    state.description = data.description;
+    state.tags = data.tags;
+    state.body = data.body;
+    state.isPublished = data.isPublished;
+  },
 });
 
 const dataBody = computed(() => {
@@ -104,11 +99,11 @@ const dataBody = computed(() => {
   };
 });
 const {
-  data: newPost,
-  status: newPostStatus,
-  execute: createPost,
-} = useFetch("/api/posts", {
-  method: "POST",
+  data: savedPost,
+  status: savedPostStatus,
+  execute: savePost,
+} = useFetch(`/api/posts/${route.params.id}`, {
+  method: "PUT",
   body: dataBody,
   immediate: false,
   watch: false,
@@ -116,18 +111,13 @@ const {
 
 const { showNotification } = useNotification();
 const onSubmitNewPost = async () => {
-  await createPost();
+  await savePost();
 
-  if (newPost.value) {
+  if (savedPost.value) {
     showNotification({
-      title: "Post created succesfully",
+      title: "Post saved succesfully",
       type: "success",
     });
-
-    state.title = "";
-    state.description = "";
-    state.tags = [];
-    state.body = template;
   }
 };
 </script>

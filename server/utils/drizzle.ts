@@ -9,5 +9,5 @@ export function useDrizzle() {
   return drizzle(hubDatabase(), { schema });
 }
 
-export type Article = typeof schema.article.$inferSelect;
+export type Post = typeof schema.post.$inferSelect;
 export type Tag = typeof schema.tag.$inferSelect;

@@ -7,7 +7,9 @@
         {{ title }}
       </Typography>
     </div>
-    <div class="overflow-y-scroll min-h-[calc(100vh-var(--header-height))]">
+    <div
+      class="flex flex-col overflow-y-scroll min-h-[calc(100vh-var(--header-height))]"
+    >
       <NuxtPage />
     </div>
   </div>

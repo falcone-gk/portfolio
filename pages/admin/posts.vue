@@ -18,7 +18,8 @@ definePageMeta({
 });
 
 const postLinks = [
-  { label: "Post list", to: "/admin/posts/", exact: true },
+  { label: "Post list", to: "/admin/posts", exact: true },
   { label: "Create Post", to: "/admin/posts/create" },
+  { label: "Edit Post", to: "/admin/posts/edit" },
 ];
 </script>
