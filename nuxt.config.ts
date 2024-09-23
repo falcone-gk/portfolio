@@ -39,10 +39,10 @@ export default defineNuxtConfig({
   hub: {
     database: true,
   },
-  mdc: {
-    highlight: {
-      highlighter: "shiki",
-      langs: ["vue", "ts", "js", "py"],
-    },
-  },
+  // mdc: {
+  //   highlight: {
+  //     highlighter: "shiki",
+  //     langs: ["vue", "ts", "js", "py"],
+  //   },
+  // },
 });
