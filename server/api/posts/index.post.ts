@@ -1,18 +1,8 @@
 import { postSchema } from "~/schemas";
 import { slugify } from "~/utils/text";
 
-export default defineEventHandler(async (event) => {
-  const body = await readValidatedBody(event, postSchema.safeParse);
-
-  if (!body.success) {
-    throw createError({
-      status: 400,
-      statusMessage: "Validation Error",
-      message: JSON.stringify(body.error.issues),
-    });
-  }
-
-  const data = body.data;
+export default defineValidatedHandler(postSchema, async (event) => {
+  const data = await readTypeSafeData(event, postSchema);
 
   const [newPost] = await useDrizzle()
     .insert(tables.post)

@@ -2,30 +2,29 @@ import { z } from "zod";
 import { eq, inArray } from "drizzle-orm";
 import { postSchema } from "~/schemas";
 
-export default defineEventHandler(async (event) => {
+const partialPostSchema = postSchema.partial();
+
+export default defineValidatedHandler(partialPostSchema, async (event) => {
   const postIdSchema = z.object({
     id: z.number({ coerce: true }).positive().int(),
   });
   const { id } = await getValidatedRouterParams(event, postIdSchema.parse);
 
-  const partialPostSchema = postSchema.partial();
-  const body = await readValidatedBody(event, partialPostSchema.safeParse);
-
-  if (!body.data) {
+  const data = await readTypeSafeData(event, partialPostSchema);
+  if (!data) {
     return "No updates sent.";
   }
 
   const db = useDrizzle();
+  await db.update(tables.post).set(data).where(eq(tables.post.id, id));
 
-  await db.update(tables.post).set(body.data).where(eq(tables.post.id, id));
-
-  if (body.data.tags) {
+  if (data.tags) {
     const tagIds = await db
       .select({
         id: tables.tag.id,
       })
       .from(tables.tag)
-      .where(inArray(tables.tag.id, body.data.tags)); // find tags by id
+      .where(inArray(tables.tag.id, data.tags)); // find tags by id
 
     // const existingTagIds = await db
     //   .select({

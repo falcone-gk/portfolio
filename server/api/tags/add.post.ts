@@ -1,21 +1,14 @@
 import { z } from "zod";
 
-export default defineEventHandler(async (event) => {
-  const tagSchema = z.object({
-    tag: z.string().min(1),
-  });
-  const body = await readValidatedBody(event, tagSchema.safeParse);
+const tagSchema = z.object({
+  tag: z.string().min(1),
+});
 
-  if (!body.success) {
-    throw createError({
-      status: 400,
-      statusMessage: "Validation Error",
-      message: JSON.stringify(body.error.issues),
-    });
-  }
+export default defineValidatedHandler(tagSchema, async (event) => {
+  const data = await readTypeSafeData(event, tagSchema);
 
   await useDrizzle().insert(tables.tag).values({
-    name: body.data.tag,
+    name: data.tag,
   });
 
   setResponseStatus(event, 201);

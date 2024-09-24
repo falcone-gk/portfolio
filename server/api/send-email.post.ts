@@ -1,19 +1,7 @@
-import { useAsyncData } from "nuxt/app";
 import { contactSchema } from "~/schemas";
 
-export default defineEventHandler(async (event) => {
-  const body = await readValidatedBody(event, contactSchema.safeParse);
-
-  if (!body.success) {
-    throw createError({
-      status: 400,
-      statusMessage: "Validation Error",
-      message: JSON.stringify(body.error.issues),
-      data: body.error.issues,
-    });
-  }
-
-  const data = body.data;
+export default defineValidatedHandler(contactSchema, async (event) => {
+  const data = await readTypeSafeData(event, contactSchema);
 
   const config = useRuntimeConfig();
   const postmailToken = config.postmailToken;

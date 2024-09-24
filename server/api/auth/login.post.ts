@@ -1,18 +1,9 @@
 import { loginSchema } from "~/schemas";
 
-export default defineEventHandler(async (event) => {
-  const body = await readValidatedBody(event, loginSchema.safeParse);
+export default defineValidatedHandler(loginSchema, async (event) => {
+  const data = await readTypeSafeData(event, loginSchema);
 
-  if (!body.success) {
-    throw createError({
-      status: 400,
-      statusMessage: "Bad request",
-      message: "Invalid input body",
-    });
-  }
-
-  const data = body.data;
-  const config = useRuntimeConfig();
+  const config = useRuntimeConfig(event);
   const { username, password } = config.basicAuth;
 
   if (data.username === username && data.password === password) {
