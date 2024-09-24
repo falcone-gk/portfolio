@@ -4,9 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/ui", "@nuxthub/core", "@nuxtjs/mdc"],
   runtimeConfig: {
-    public: {
-      postmailToken: process.env.POSTMAIL_TOKEN,
-    },
+    postmailToken: process.env.POSTMAIL_TOKEN,
   },
   $production: {
     runtimeConfig: {

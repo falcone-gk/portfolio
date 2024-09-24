@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { z } from "zod";
+import { contactSchema } from "~/schemas";
 
 const form = ref<HTMLFormElement>();
 const state = reactive({
@@ -48,37 +48,17 @@ const state = reactive({
   email: "",
   message: "",
 });
-const contactSchema = z.object({
-  subject: z.string().min(1),
-  email: z.string().email(),
-  message: z.string().min(1),
-});
 
-const config = useRuntimeConfig();
-const subjectMessage = "Contact from portfolio website";
-const completeMessage = computed(() => {
-  return `${state.subject}\n\nEmail to contact: ${state.email}\n\nMessage:\n${state.message}`;
-});
 const {
   data,
   status,
   execute: sendEmail,
-} = useLazyAsyncData(
-  "send-email",
-  () =>
-    $fetch("https://postmail.invotes.com/send", {
-      method: "POST",
-      body: {
-        subject: subjectMessage,
-        text: completeMessage.value,
-        access_token: config.public.postmailToken,
-      },
-    }),
-  {
-    immediate: false,
-  },
-);
-
+} = useFetch("/api/send-email", {
+  method: "POST",
+  immediate: false,
+  watch: false,
+  body: state,
+});
 const { showNotification } = useNotification();
 const onSubmit = async () => {
   await sendEmail();
