@@ -9,6 +9,5 @@ export const readTypeSafeData = async <
   schema: Schema,
 ): Promise<ZodInfer<Schema>> => {
   const _body = await readBody(event);
-  const data = _body.data;
-  return data;
+  return _body;
 };
