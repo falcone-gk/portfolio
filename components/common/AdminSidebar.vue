@@ -1,9 +1,10 @@
 <template>
   <UCard
     :ui="{
-      base: 'min-w-[300px]',
+      base: 'flex flex-col min-w-[300px]',
       rounded: '',
       background: 'bg-white dark:bg-gray-950',
+      footer: { base: 'mt-auto' },
     }"
   >
     <UVerticalNavigation
@@ -13,6 +14,16 @@
         active: 'before:bg-primary-100 dark:before:bg-primary-600',
       }"
     />
+
+    <template #footer>
+      <UButton
+        class="w-full"
+        icon="i-heroicons-arrow-right-end-on-rectangle-solid"
+        label="Cerrar sesión"
+        variant="outline"
+        @click="onLogout"
+      />
+    </template>
   </UCard>
 </template>
 
@@ -34,4 +45,10 @@ const publicLinks = [
 ];
 
 const links = [adminLinks, publicLinks];
+
+const { execute: logout } = useFetch("/api/auth/logout", { method: "POST" });
+const onLogout = async () => {
+  await logout();
+  navigateTo("/");
+};
 </script>
