@@ -7,26 +7,36 @@ export default defineValidatedHandler(loginSchema, async (event) => {
   const { username, password } = config.basicAuth;
 
   if (data.username === username && data.password === password) {
-    setCookie(event, "token", password, {
-      maxAge: 60 * 60 * 24,
-      sameSite: "strict",
-    });
-
-    const session = await useSession(event, {
-      name: "session",
-      password: password,
-      cookie: {
-        httpOnly: true,
-        secure: true,
-        sameSite: "strict",
+    await setUserSession(event, {
+      user: {
+        login: data.username,
+        // isAdmin: true,
       },
-      maxAge: 60 * 60,
+      secure: {
+        apiToken: data.password,
+      },
+      loggedInAt: new Date(),
     });
+    // setCookie(event, "token", password, {
+    //   maxAge: 60 * 60 * 24,
+    //   sameSite: "strict",
+    // });
 
-    await session.update({
-      username: username,
-      isAdmin: true,
-    });
+    // const session = await useSession(event, {
+    //   name: "session",
+    //   password: password,
+    //   cookie: {
+    //     httpOnly: true,
+    //     secure: true,
+    //     sameSite: "strict",
+    //   },
+    //   maxAge: 60 * 60,
+    // });
+
+    // await session.update({
+    //   username: username,
+    //   isAdmin: true,
+    // });
 
     return {
       status: "success",

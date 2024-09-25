@@ -51,12 +51,14 @@ const { data, execute } = useLazyFetch("/api/auth/login", {
   body: state,
 });
 
+const { fetch } = useUserSession();
 const route = useRoute();
 const submitLogin = async () => {
   await execute();
 
   if (data.value) {
     const nextPage = route.query.next ? route.query.next : "/admin";
+    await fetch();
     navigateTo(nextPage as string, { replace: true });
   } else {
     form.value?.setErrors([
