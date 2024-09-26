@@ -4,7 +4,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
   if (!loggedIn.value && config.public.auth) {
     return navigateTo({
       path: "/login",
-      query: { next: from.fullPath },
+      // query: { next: from.fullPath },
     });
   }
 });
