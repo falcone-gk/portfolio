@@ -8,6 +8,9 @@ export default defineNuxtConfig({
   },
   $production: {
     runtimeConfig: {
+      public: {
+        auth: true,
+      },
       basicAuth: {
         enabled: true,
         username: process.env.ADMIN_USER,
@@ -17,8 +20,11 @@ export default defineNuxtConfig({
   },
   $development: {
     runtimeConfig: {
+      public: {
+        auth: false,
+      },
       basicAuth: {
-        enabled: true,
+        enabled: false,
         username: "admin",
         password:
           "$2y$10$sa7YxQ33oAv8VLaBW.O19uhbRmTC2mX8Jmuv3RCK18s51MunbH1Z2",

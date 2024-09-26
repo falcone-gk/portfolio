@@ -2,6 +2,9 @@ import { postSchema } from "~/schemas";
 import { slugify } from "~/utils/text";
 
 export default defineValidatedHandler(postSchema, async (event) => {
+  if (isServer()) {
+    await requireUserSession(event);
+  }
   const data = await readTypeSafeData(event, postSchema);
 
   const [newPost] = await useDrizzle()

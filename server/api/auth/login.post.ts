@@ -17,26 +17,6 @@ export default defineValidatedHandler(loginSchema, async (event) => {
       },
       loggedInAt: new Date(),
     });
-    // setCookie(event, "token", password, {
-    //   maxAge: 60 * 60 * 24,
-    //   sameSite: "strict",
-    // });
-
-    // const session = await useSession(event, {
-    //   name: "session",
-    //   password: password,
-    //   cookie: {
-    //     httpOnly: true,
-    //     secure: true,
-    //     sameSite: "strict",
-    //   },
-    //   maxAge: 60 * 60,
-    // });
-
-    // await session.update({
-    //   username: username,
-    //   isAdmin: true,
-    // });
 
     return {
       status: "success",

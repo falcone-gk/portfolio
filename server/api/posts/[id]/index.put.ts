@@ -5,6 +5,10 @@ import { postSchema } from "~/schemas";
 const partialPostSchema = postSchema.partial();
 
 export default defineValidatedHandler(partialPostSchema, async (event) => {
+  if (isServer()) {
+    await requireUserSession(event);
+  }
+
   const postIdSchema = z.object({
     id: z.number({ coerce: true }).positive().int(),
   });
