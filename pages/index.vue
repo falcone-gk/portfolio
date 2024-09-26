@@ -46,4 +46,10 @@ useSeoMeta({
     "Portfolio website to show my skills, projects, work experience and blog content.",
   ogLocale: "es",
 });
+
+defineShortcuts({
+  ctrl_shift_k: {
+    handler: () => navigateTo("/admin"),
+  },
+});
 </script>
