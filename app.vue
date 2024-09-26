@@ -9,8 +9,8 @@
 <script setup lang="ts">
 useHead({
   titleTemplate: (titleChunk) => {
-    if (titleChunk === "Enzo Falcon") return titleChunk;
-    return titleChunk ? `${titleChunk} - Enzo Falcon` : "Enzo Falcon";
+    if (titleChunk === "FalconeX") return titleChunk;
+    return titleChunk ? `${titleChunk} - FalconeX` : "FalconeX";
   },
 });
 </script>

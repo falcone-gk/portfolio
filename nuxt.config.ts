@@ -34,6 +34,11 @@ export default defineNuxtConfig({
       remote: true,
     },
   },
+  app: {
+    head: {
+      link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
+    },
+  },
   css: ["~/assets/css/main.css"],
   ui: {
     icons: ["logos"],

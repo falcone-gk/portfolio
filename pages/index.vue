@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: "Enzo Falcon",
+  title: "FalconeX",
   description:
     "Portfolio website to show my skills, projects, work experience and blog content.",
   ogTitle: "Enzo Falcon",

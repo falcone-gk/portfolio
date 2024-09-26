@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen flex">
     <NuxtLoadingIndicator />
-    <CommonAdminSidebar class="hidden md:block" />
+    <CommonAdminSidebar />
     <div class="flex w-full">
       <slot />
     </div>

@@ -1,7 +1,7 @@
 <template>
   <UCard
     :ui="{
-      base: 'flex flex-col min-w-[300px]',
+      base: 'hidden md:flex flex-col min-w-[300px]',
       rounded: '',
       background: 'bg-white dark:bg-gray-950',
       footer: { base: 'mt-auto' },
@@ -11,9 +11,15 @@
       class="min-w-[250px]"
       :links="links"
       :ui="{
-        active: 'before:bg-primary-100 dark:before:bg-primary-600',
+        active: 'before:bg-primary-300 dark:before:bg-primary-600',
       }"
-    />
+    >
+      <template #badge="{ link }">
+        <div v-if="link.input" class="flex items-center ml-auto">
+          <UToggle v-model="selected" @click="toggleColorMode" />
+        </div>
+      </template>
+    </UVerticalNavigation>
 
     <template #footer>
       <UButton
@@ -44,7 +50,22 @@ const publicLinks = [
   { label: "Blog", icon: "i-heroicons-book-open-solid", to: "/blog" },
 ];
 
-const links = [adminLinks, publicLinks];
+const darkMode = [
+  { label: "Dark mode", icon: "i-heroicons-moon-solid", input: true },
+];
+
+const links = [adminLinks, publicLinks, darkMode];
+
+const colorMode = useColorMode();
+const selected = ref<boolean>(colorMode.preference === "dark" ? true : false);
+
+const toggleColorMode = () => {
+  const colorSwitcher = {
+    light: "dark",
+    dark: "light",
+  };
+  colorMode.preference = colorSwitcher[colorMode.value as "light" | "dark"];
+};
 
 const { execute: logout } = useFetch("/api/auth/logout", { method: "POST" });
 const onLogout = async () => {
