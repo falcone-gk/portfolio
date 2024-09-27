@@ -26,7 +26,9 @@
           icon="i-heroicons-lock-closed-20-solid"
         />
       </UFormGroup>
-      <UButton type="submit" block>Iniciar sesión</UButton>
+      <UButton type="submit" :loading="status === 'pending'" block
+        >Iniciar sesión</UButton
+      >
     </UForm>
   </UCard>
 </template>
@@ -44,7 +46,7 @@ const state = reactive({
   password: "",
 });
 
-const { data, execute } = useLazyFetch("/api/auth/login", {
+const { data, status, execute } = useLazyFetch("/api/auth/login", {
   method: "POST",
   immediate: false,
   watch: false,
