@@ -52,7 +52,7 @@ export default defineNuxtConfig({
     dirs: ["types/*.d.ts"],
   },
   routeRules: {
-    "/": { prerender: true },
+    // "/": { prerender: true },
     "/admin/**": { ssr: false },
     "/login": { ssr: false },
     "/api/**": { cors: true },
