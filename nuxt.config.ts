@@ -67,6 +67,7 @@ export default defineNuxtConfig({
     highlight: {
       highlighter: "shiki",
       langs: ["vue", "ts", "js", "py"],
+      theme: "catppuccin-macchiato",
     },
   },
   vite: {
