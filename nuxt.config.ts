@@ -17,6 +17,11 @@ export default defineNuxtConfig({
         password: process.env.ADMIN_PASSWORD,
       },
     },
+    nitro: {
+      experimental: {
+        wasm: true,
+      },
+    },
   },
   $development: {
     runtimeConfig: {
@@ -58,10 +63,19 @@ export default defineNuxtConfig({
   hub: {
     database: true,
   },
-  // mdc: {
-  //   highlight: {
-  //     highlighter: "shiki",
-  //     langs: ["vue", "ts", "js", "py"],
-  //   },
-  // },
+  mdc: {
+    highlight: {
+      highlighter: "shiki",
+      langs: ["vue", "ts", "js", "py"],
+    },
+  },
+  vite: {
+    build: {
+      rollupOptions: {
+        external: [
+          "shiki/onig.wasm", // !Important: externalize the wasm import
+        ],
+      },
+    },
+  },
 });
