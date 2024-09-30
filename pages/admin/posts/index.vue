@@ -50,8 +50,8 @@
 <script setup lang="ts">
 const columns = [
   { key: "id", label: "ID" },
-  { key: "title", label: "Title" },
-  { key: "description", label: "Description" },
+  { key: "title", label: "Title", rowClass: "max-w-xs truncate" },
+  { key: "description", label: "Description", rowClass: "max-w-xs truncate" },
   { key: "isPublished", label: "Status" },
   { key: "createdAt", label: "Date Creation" },
   { key: "actions", label: "Actions" },
