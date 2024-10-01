@@ -2,6 +2,7 @@
   <UCard
     :ui="{
       base: 'flex flex-col',
+      rounded: '',
       header: {
         base: 'h-48',
         padding: '',
@@ -13,7 +14,7 @@
   >
     <template #header>
       <img
-        class="w-full h-full object-cover rounded-t-lg"
+        class="w-full h-full object-cover"
         :src="props.imageUrl"
         :alt="props.title"
       />

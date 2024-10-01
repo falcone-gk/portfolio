@@ -1,31 +1,31 @@
 <template>
-  <div
-    class="grid gap-4 mt-10 auto-cols-auto grid-cols-[repeat(auto-fill,minmax(15rem,1fr))]"
-  >
-    <UiCardResume
-      v-for="(project, index) in projects"
-      v-bind="project"
-      :key="`proj-${index}`"
-    >
-      <template #customFooter>
-        <div class="flex gap-2 flex-wrap">
-          <UButton
-            label="Visit"
-            variant="outline"
-            :to="project.visitUrl"
-            target="_blank"
-          />
+  <div class="mt-10">
+    <CommonGrid>
+      <UiCardResume
+        v-for="(project, index) in projects"
+        v-bind="project"
+        :key="`proj-${index}`"
+      >
+        <template #customFooter>
+          <div class="flex gap-2 flex-wrap">
+            <UButton
+              label="Visit"
+              variant="outline"
+              :to="project.visitUrl"
+              target="_blank"
+            />
 
-          <UButton
-            v-if="project.githubUrl"
-            label="Repository"
-            icon="i-logos-github-icon"
-            :to="project.githubUrl"
-            target="_blank"
-          />
-        </div>
-      </template>
-    </UiCardResume>
+            <UButton
+              v-if="project.githubUrl"
+              label="Repository"
+              icon="i-logos-github-icon"
+              :to="project.githubUrl"
+              target="_blank"
+            />
+          </div>
+        </template>
+      </UiCardResume>
+    </CommonGrid>
   </div>
 </template>
 
