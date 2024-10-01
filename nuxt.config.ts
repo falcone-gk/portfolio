@@ -64,7 +64,7 @@ export default defineNuxtConfig({
   },
   hub: {
     database: true,
-    blob: true,
+    // blob: true,
   },
   mdc: {
     highlight: {

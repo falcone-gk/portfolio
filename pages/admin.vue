@@ -1,25 +1,14 @@
 <template>
-  <div class="w-full">
-    <div
-      class="flex items-center px-4 h-[var(--header-height)] border-b-[1px] dark:border-b-gray-800"
-    >
-      <Typography tag="h1" variant="h2">
-        {{ title }}
-      </Typography>
-    </div>
-    <div
-      class="flex flex-col overflow-y-scroll min-h-[calc(100vh-var(--header-height))]"
-    >
-      <NuxtPage />
-    </div>
-  </div>
+  <NuxtPage />
 </template>
 
 <script setup lang="ts">
+// The middleware is required to ensure that the user is authenticated
+// and that the title is set for each view in admin
+// In order to get the title, we need to add title to the page meta
+// in each view
 definePageMeta({
   middleware: ["auth", "title"],
   layout: "admin",
 });
-
-const title = useState("title");
 </script>
