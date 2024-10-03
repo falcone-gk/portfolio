@@ -13,6 +13,7 @@
             :title="post.title"
             :description="post.description"
             :key="index"
+            :to="`/blog/${post.slug}`"
           />
         </CommonGrid>
       </template>
@@ -28,12 +29,16 @@ useSeoMeta({
   ogTitle: "Blog",
 });
 
+const nuxtApp = useNuxtApp();
 const page = ref(1);
 const pageCount = ref(10);
-const { data: posts, status } = useLazyFetch("/api/posts/published", {
+const { data: posts, status } = useLazyFetch("/api/blog/posts", {
   query: {
     page: page,
     pageCount: pageCount,
+  },
+  getCachedData: (key) => {
+    return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
   },
 });
 </script>

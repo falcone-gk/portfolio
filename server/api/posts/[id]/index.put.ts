@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { eq, inArray } from "drizzle-orm";
 import { postSchema } from "~/schemas";
+import { slugify } from "~/utils/text";
 
 const partialPostSchema = postSchema.partial();
 
@@ -19,8 +20,14 @@ export default defineValidatedHandler(partialPostSchema, async (event) => {
     return "No updates sent.";
   }
 
+  const dataToUpdate = {
+    ...data,
+    ...(data.title && { slug: slugify(data.title) }),
+    updatedAt: new Date(),
+  };
+
   const db = useDrizzle();
-  await db.update(tables.post).set(data).where(eq(tables.post.id, id));
+  await db.update(tables.post).set(dataToUpdate).where(eq(tables.post.id, id));
 
   if (data.tags) {
     const tagIds = await db

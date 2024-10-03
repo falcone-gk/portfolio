@@ -22,9 +22,24 @@ export interface Tag {
 }
 
 export interface Post {
+  id: number;
   title: string;
+  slug: string;
   description: string;
   tags: Tag[];
   body: string;
-  isPublished: boolean;
+  isPublished: boolean | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export type CorePost = Omit<Post, "tags">;
+
+export interface MTMTagsOnPost {
+  posts: CorePost | null;
+  tags: Tag | null;
+  tags_to_posts: {
+    postId: number;
+    tagId: number;
+  };
 }

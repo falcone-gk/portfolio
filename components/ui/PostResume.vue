@@ -10,7 +10,7 @@
     </div>
 
     <template #footer>
-      <UButton label="Read more" variant="outline" />
+      <UButton label="Read more" variant="outline" :to="props.to" />
     </template>
   </UCard>
 </template>
@@ -19,5 +19,6 @@
 const props = defineProps<{
   title: String;
   description: String;
+  to: String;
 }>();
 </script>
