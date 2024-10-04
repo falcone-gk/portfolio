@@ -1,8 +1,8 @@
 <template>
   <MDC v-if="body.trim()" v-slot="{ data, body }" :value="fullBody">
-    <div class="p-4 prose dark:prose-invert" v-bind="$attrs">
+    <article class="p-4 prose dark:prose-invert" v-bind="$attrs">
       <MDCRenderer v-if="body" :body="body" :data="data" />
-    </div>
+    </article>
   </MDC>
 </template>
 

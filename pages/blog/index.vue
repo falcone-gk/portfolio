@@ -1,5 +1,5 @@
 <template>
-  <Typography tag="h1" variant="h1"> Posts list </Typography>
+  <Typography tag="h1" variant="h1"> Blog </Typography>
   <div class="mt-10">
     <DataLoading
       :data="posts"
