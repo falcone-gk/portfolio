@@ -1,11 +1,11 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "26238275-aa8f-426e-9431-142814f4c564",
-  "prevId": "ddb15564-fb97-4cd6-9be3-49de42c8b433",
+  "id": "c7a7f160-93a5-4623-bd12-cf9488ae0557",
+  "prevId": "acc75e1a-ad14-412b-8aa8-52afd1771e58",
   "tables": {
-    "articles": {
-      "name": "articles",
+    "posts": {
+      "name": "posts",
       "columns": {
         "id": {
           "name": "id",
@@ -21,12 +21,27 @@
           "notNull": true,
           "autoincrement": false
         },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
         "description": {
           "name": "description",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        },
+        "tags": {
+          "name": "tags",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'[]'"
         },
         "body": {
           "name": "body",
@@ -35,12 +50,29 @@
           "notNull": true,
           "autoincrement": false
         },
+        "is_published": {
+          "name": "is_published",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": false
+        },
         "created_at": {
           "name": "created_at",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
+          "autoincrement": false,
+          "default": "(current_timestamp)"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(current_timestamp)"
         }
       },
       "indexes": {},
@@ -68,56 +100,6 @@
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
-    "tags_to_articles": {
-      "name": "tags_to_articles",
-      "columns": {
-        "tag_id": {
-          "name": "tag_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "article_id": {
-          "name": "article_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "tags_to_articles_tag_id_tags_id_fk": {
-          "name": "tags_to_articles_tag_id_tags_id_fk",
-          "tableFrom": "tags_to_articles",
-          "tableTo": "tags",
-          "columnsFrom": [
-            "tag_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "tags_to_articles_article_id_articles_id_fk": {
-          "name": "tags_to_articles_article_id_articles_id_fk",
-          "tableFrom": "tags_to_articles",
-          "tableTo": "articles",
-          "columnsFrom": [
-            "article_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     }
