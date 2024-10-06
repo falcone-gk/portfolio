@@ -65,12 +65,13 @@
 </template>
 
 <script setup lang="ts">
-import type { Post } from "~/types";
+import type { Post, Tag } from "~/types";
 import { postSchema } from "~/schemas";
 
-const { data: tags } = await useFetch("/api/tags");
+const { data: tags } = await useTags();
 
-const state = reactive<Post>({
+type FormPost = Omit<Post, "id" | "slug" | "createdAt" | "updatedAt">;
+const state = reactive<FormPost>({
   title: "",
   description: "",
   tags: [],
@@ -80,22 +81,23 @@ const state = reactive<Post>({
 
 const route = useRoute();
 const { data: post } = useLazyFetch(`/api/posts/${route.params.id}`, {
-  server: false,
   onResponse: ({ response }) => {
     const data = response._data;
     state.title = data.title;
     state.description = data.description;
-    state.tags = data.tags;
     state.body = data.body;
     state.isPublished = data.isPublished;
+
+    if (tags.value) {
+      state.tags = tags.value.filter((tag) => data.tags.includes(tag.name));
+    }
   },
 });
 
 const dataBody = computed(() => {
   return {
     ...state,
-    tags: state.tags.map((tag) => tag.id),
-    // body: fullBody.value,
+    tags: state.tags.map((tag) => tag.name),
   };
 });
 const {

@@ -8,7 +8,7 @@ export const loginSchema = z.object({
 export const postSchema = z.object({
   title: z.string().min(1),
   description: z.string().min(1),
-  tags: z.number().array(),
+  tags: z.string().array(),
   body: z.string().min(1),
   isPublished: z.boolean(),
 });

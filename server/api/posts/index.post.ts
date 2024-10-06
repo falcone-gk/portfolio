@@ -7,22 +7,16 @@ export default defineValidatedHandler(postSchema, async (event) => {
   }
   const data = await readTypeSafeData(event, postSchema);
 
-  const [newPost] = await useDrizzle()
+  await useDrizzle()
     .insert(tables.post)
     .values({
-      title: data.title,
-      description: data.description,
-      body: data.body,
+      // title: data.title,
+      // description: data.description,
+      // body: data.body,
+      ...data,
       slug: slugify(data.title),
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    })
-    .returning({ id: tables.post.id });
-
-  const mtmTagsToPost = data.tags.map((tag) => {
-    return { tagId: tag, postId: newPost.id };
-  });
-  await useDrizzle().insert(tables.tagsToPosts).values(mtmTagsToPost);
+      tags: JSON.stringify(data.tags),
+    });
 
   setResponseStatus(event, 201);
   return {

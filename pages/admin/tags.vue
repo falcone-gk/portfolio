@@ -66,7 +66,8 @@ definePageMeta({
   title: "Tags",
 });
 
-const { data: tags, status } = useLazyFetch("/api/tags");
+// const { data: tags, status } = useLazyFetch("/api/tags");
+const { data: tags, status } = await useTags({ lazy: true });
 
 // Filter data with pagination
 const q = ref("");

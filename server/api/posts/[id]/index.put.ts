@@ -20,45 +20,20 @@ export default defineValidatedHandler(partialPostSchema, async (event) => {
     return "No updates sent.";
   }
 
-  const dataToUpdate = {
+  // Remove tags because of typescript error
+  const dataNoTags = {
     ...data,
+    tags: undefined,
+  };
+  const dataToUpdate = {
+    ...dataNoTags,
     ...(data.title && { slug: slugify(data.title) }),
+    ...(data.tags && { tags: JSON.stringify(data.tags) }),
     updatedAt: new Date(),
   };
 
   const db = useDrizzle();
   await db.update(tables.post).set(dataToUpdate).where(eq(tables.post.id, id));
-
-  if (data.tags) {
-    const tagIds = await db
-      .select({
-        id: tables.tag.id,
-      })
-      .from(tables.tag)
-      .where(inArray(tables.tag.id, data.tags)); // find tags by id
-
-    // const existingTagIds = await db
-    //   .select({
-    //     id: tables.tagsToPosts.tagId,
-    //   })
-    //   .from(tables.tagsToPosts)
-    //   .where(eq(tables.tagsToPosts.postId, id));
-
-    // Delete related tags
-    await db
-      .delete(tables.tagsToPosts)
-      .where(eq(tables.tagsToPosts.postId, id));
-
-    // Insert new tags
-    const newTagsToPosts = tagIds.map((tagId) => ({
-      postId: id,
-      tagId: tagId.id,
-    }));
-
-    if (newTagsToPosts.length > 0) {
-      await db.insert(tables.tagsToPosts).values(newTagsToPosts);
-    }
-  }
 
   return {
     status: "success",

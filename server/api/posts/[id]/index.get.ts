@@ -9,11 +9,8 @@ export default defineEventHandler(async (event) => {
 
   const data = await useDrizzle()
     .select()
-    .from(tables.tagsToPosts)
-    .where(eq(tables.tagsToPosts.postId, id))
-    .leftJoin(tables.post, eq(tables.tagsToPosts.postId, tables.post.id))
-    .leftJoin(tables.tag, eq(tables.tagsToPosts.tagId, tables.tag.id))
-    .all();
+    .from(tables.post)
+    .where(eq(tables.post.id, id));
 
   if (data.length === 0) {
     throw createError({
@@ -22,25 +19,10 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const postsMap = new Map();
+  const post = {
+    ...data[0],
+    tags: JSON.parse(data[0].tags) as string[],
+  };
 
-  // Organize posts and tags
-  data.forEach((item) => {
-    const post = item.posts!;
-    const tag = item.tags;
-
-    if (!postsMap.has(post.id)) {
-      postsMap.set(post.id, {
-        ...post,
-        tags: [],
-      });
-    }
-
-    postsMap.get(post.id).tags.push(tag);
-  });
-
-  // Convert Map to array
-  const result = Array.from(postsMap.values());
-
-  return result[0];
+  return post;
 });

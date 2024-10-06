@@ -68,7 +68,8 @@
 import type { Post } from "~/types";
 import { postSchema } from "~/schemas";
 
-const { data: tags } = useLazyFetch("/api/tags");
+// const { data: tags } = useLazyFetch("/api/tags");
+const { data: tags } = await useTags({ lazy: true });
 
 const template = `# Simple
 
@@ -88,7 +89,9 @@ async function main(mdc: string) {
   return ast // [!code --]
 }
 \`\`\``;
-const state = reactive<Post>({
+
+type FormPost = Omit<Post, "id" | "slug" | "createdAt" | "updatedAt">;
+const state = reactive<FormPost>({
   title: "",
   description: "",
   tags: [],
@@ -99,8 +102,7 @@ const state = reactive<Post>({
 const dataBody = computed(() => {
   return {
     ...state,
-    tags: state.tags.map((tag) => tag.id),
-    // body: fullBody.value,
+    tags: state.tags.map((tag) => tag.name),
   };
 });
 const {
