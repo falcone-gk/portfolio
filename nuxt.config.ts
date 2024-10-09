@@ -35,6 +35,9 @@ export default defineNuxtConfig({
           "$2y$10$sa7YxQ33oAv8VLaBW.O19uhbRmTC2mX8Jmuv3RCK18s51MunbH1Z2",
       },
     },
+    routeRules: {
+      "/blog/**": { ssr: false },
+    },
     hub: {
       remote: true,
     },
