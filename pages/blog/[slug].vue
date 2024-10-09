@@ -10,12 +10,8 @@
 </template>
 
 <script lang="ts" setup>
-const nuxtApp = useNuxtApp();
 const route = useRoute();
-const { slug } = route.params;
-const { data: post } = await useFetch(`/api/blog/posts/${slug}`, {
-  getCachedData: (key) => {
-    return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
-  },
-});
+const slug = route.params.slug;
+const { fetchPost } = usePosts();
+const post = await fetchPost(slug as string);
 </script>

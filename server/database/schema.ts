@@ -8,7 +8,7 @@ export const tag = sqliteTable("tags", {
 
 export const post = sqliteTable("posts", {
   id: integer("id").primaryKey({ autoIncrement: true }),
-  title: text("title").notNull(),
+  title: text("title").notNull().unique(),
   slug: text("slug").notNull(),
   description: text("description").notNull(),
   tags: text("tags").notNull().default("[]"),

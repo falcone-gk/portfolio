@@ -19,6 +19,13 @@ export default defineEventHandler(async (event) => {
       .offset(offset),
   ]);
 
+  const transformedPosts = posts.map((post) => {
+    return {
+      ...post,
+      tags: JSON.parse(post.tags) as string[],
+    };
+  });
+
   const totalPages = Math.ceil(totalPosts.count / pageSize);
   return {
     count: totalPosts.count,
@@ -28,6 +35,6 @@ export default defineEventHandler(async (event) => {
         : null,
     previous:
       page > 1 ? `/api/posts?page=${page - 1}&pageSize=${pageSize}` : null,
-    results: posts,
+    results: transformedPosts,
   };
 });

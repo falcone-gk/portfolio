@@ -1,17 +1,12 @@
 <template>
   <Typography tag="h1" variant="h1"> Blog </Typography>
   <div class="mt-10">
-    <DataLoading
-      :data="posts"
-      :list="posts?.results"
-      :loading="status !== 'success'"
-    >
+    <DataLoading :data="posts" :loading="status !== 'success'">
       <template #data="{ data: posts }">
         <CommonGrid>
           <UiPostResume
-            v-for="(post, index) in posts.results"
-            :title="post.title"
-            :description="post.description"
+            v-for="(post, index) in posts"
+            :post="post"
             :key="index"
             :to="`/blog/${post.slug}`"
           />

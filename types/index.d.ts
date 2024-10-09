@@ -35,6 +35,12 @@ export interface Post {
 
 export type CorePost = Omit<Post, "tags">;
 
+interface BlogPost extends Omit<Post, "tags" | "createdAt" | "updatedAt"> {
+  tags: string[];
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface MTMTagsOnPost {
   posts: CorePost | null;
   tags: Tag | null;
