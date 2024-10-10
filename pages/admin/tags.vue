@@ -2,7 +2,7 @@
   <div class="px-4 py-6 space-y-16">
     <div>
       <Typography class="mb-4" tag="h2" variant="h3">
-        Tags availables
+        Tags available
       </Typography>
 
       <div class="flex flex-col-reverse md:flex-row gap-2 py-3.5">
@@ -10,7 +10,7 @@
           class="grid flex-1 auto-cols-auto grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-2"
         >
           <UInput
-            placeholder="Buscar..."
+            placeholder="Search..."
             icon="i-heroicons-magnifying-glass-solid"
             :value="q"
             @input="onInputSearch"
@@ -46,7 +46,7 @@
     >
       <UFormGroup label="New tag" name="tag" required>
         <div class="flex gap-2">
-          <UInput v-model="state.tag" />
+          <UInput v-model="state.tag"/>
           <UButton
             type="submit"
             label="Add new tag"
@@ -66,7 +66,6 @@ definePageMeta({
   title: "Tags",
 });
 
-// const { data: tags, status } = useLazyFetch("/api/tags");
 const { data: tags, status } = await useTags({ lazy: true });
 
 // Filter data with pagination
@@ -127,7 +126,7 @@ const onAddNewTag = async () => {
 
   if (addTagData.value) {
     showNotification({
-      title: "Tag added succesfully",
+      title: "Tag added successfully",
       type: "success",
     });
 

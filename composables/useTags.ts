@@ -17,8 +17,7 @@ export const useTags = async <T = Tag[]>({
         return cachedData;
       }
 
-      const data = await $fetch("/api/tags");
-      return data;
+      return await $fetch("/api/tags");
     },
     { lazy },
   );
