@@ -8,11 +8,11 @@
         class="space-y-4"
       >
         <UFormGroup label="Title" name="title" required>
-          <UInput v-model="state.title" />
+          <UInput v-model="state.title"/>
         </UFormGroup>
 
         <UFormGroup label="Description" name="description" required>
-          <UInput v-model="state.description" />
+          <UInput v-model="state.description"/>
         </UFormGroup>
 
         <div class="flex gap-4 items-start lg:items-end lg:gap-12">
@@ -23,7 +23,7 @@
               searchable-placeholder="Search a tag..."
               class="w-full lg:w-48"
               placeholder="Select tags"
-              :options="tags"
+              :options="tags as Tag[]"
               option-attribute="name"
               by="id"
               v-model="state.tags"
@@ -44,7 +44,7 @@
         </div>
 
         <UFormGroup label="Body" name="body" required>
-          <UTextarea :rows="20" class="h-full" v-model="state.body" />
+          <UTextarea :rows="20" class="h-full" v-model="state.body"/>
         </UFormGroup>
 
         <div class="flex justify-between">
@@ -57,19 +57,17 @@
       </UForm>
     </div>
     <CommonBlogPost
-      :title="state.title"
-      :description="state.description"
-      :body="state.body"
+      :post="state"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import type { Post } from "~/types";
-import { postSchema } from "~/schemas";
+import type {CorePost, Tag} from "~/types";
+import {postSchema} from "~/schemas";
 
 // const { data: tags } = useLazyFetch("/api/tags");
-const { data: tags } = await useTags({ lazy: true });
+const {data: tags} = await useTags({lazy: true});
 
 const template = `# Simple
 
@@ -90,8 +88,7 @@ async function main(mdc: string) {
 }
 \`\`\``;
 
-type FormPost = Omit<Post, "id" | "slug" | "createdAt" | "updatedAt">;
-const state = reactive<FormPost>({
+const state = reactive<CorePost>({
   title: "",
   description: "",
   tags: [],
@@ -116,7 +113,7 @@ const {
   watch: false,
 });
 
-const { showNotification } = useNotification();
+const {showNotification} = useNotification();
 const onSubmitNewPost = async () => {
   await createPost();
 

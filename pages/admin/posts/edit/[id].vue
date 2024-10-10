@@ -23,7 +23,7 @@
               searchable-placeholder="Search a tag..."
               class="w-full lg:w-48"
               placeholder="Select tags"
-              :options="tags"
+              :options="tags as Tag[]"
               option-attribute="name"
               by="id"
               v-model="state.tags"
@@ -57,21 +57,18 @@
       </UForm>
     </div>
     <CommonBlogPost
-      :title="state.title"
-      :description="state.description"
-      :body="state.body"
+      :post="post"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import type { Post, Tag } from "~/types";
+import type { CorePost, Tag } from "~/types";
 import { postSchema } from "~/schemas";
 
 const { data: tags } = await useTags();
 
-type FormPost = Omit<Post, "id" | "slug" | "createdAt" | "updatedAt">;
-const state = reactive<FormPost>({
+const state = reactive<CorePost>({
   title: "",
   description: "",
   tags: [],

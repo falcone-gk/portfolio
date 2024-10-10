@@ -5,7 +5,7 @@
       <template #data="{ data: posts }">
         <CommonGrid>
           <UiPostResume
-            v-for="(post, index) in posts"
+            v-for="(post, index) in posts.results"
             :post="post"
             :key="index"
             :to="`/blog/${post.slug}`"

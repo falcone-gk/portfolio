@@ -21,31 +21,21 @@ export interface Tag {
   name: string;
 }
 
-export interface Post {
-  id: number;
+export interface CorePost {
   title: string;
-  slug: string;
   description: string;
   tags: Tag[];
   body: string;
-  isPublished: boolean | null;
-  createdAt: Date;
-  updatedAt: Date;
+  isPublished: boolean;
 }
 
-export type CorePost = Omit<Post, "tags">;
-
-interface BlogPost extends Omit<Post, "tags" | "createdAt" | "updatedAt"> {
-  tags: string[];
+export interface Post extends CorePost {
+  id: number;
+  slug: string;
   createdAt: string;
   updatedAt: string;
 }
 
-export interface MTMTagsOnPost {
-  posts: CorePost | null;
-  tags: Tag | null;
-  tags_to_posts: {
-    postId: number;
-    tagId: number;
-  };
+interface BlogPost extends Omit<Post, "tags"> {
+  tags: string[];
 }
