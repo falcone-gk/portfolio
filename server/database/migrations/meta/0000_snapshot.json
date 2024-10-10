@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "acc75e1a-ad14-412b-8aa8-52afd1771e58",
+  "id": "89d6fbb6-71b7-42c7-a981-1624faa8be60",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "posts": {
@@ -35,6 +35,14 @@
           "notNull": true,
           "autoincrement": false
         },
+        "tags": {
+          "name": "tags",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'[]'"
+        },
         "body": {
           "name": "body",
           "type": "text",
@@ -46,7 +54,7 @@
           "name": "is_published",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false,
           "default": false
         },
@@ -67,7 +75,15 @@
           "default": "(current_timestamp)"
         }
       },
-      "indexes": {},
+      "indexes": {
+        "posts_title_unique": {
+          "name": "posts_title_unique",
+          "columns": [
+            "title"
+          ],
+          "isUnique": true
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}

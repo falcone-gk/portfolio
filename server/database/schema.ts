@@ -13,7 +13,9 @@ export const post = sqliteTable("posts", {
   description: text("description").notNull(),
   tags: text("tags").notNull().default("[]"),
   body: text("body").notNull(),
-  isPublished: integer("is_published", { mode: "boolean" }).default(false),
+  isPublished: integer("is_published", { mode: "boolean" })
+    .notNull()
+    .default(false),
   createdAt: integer("created_at", { mode: "timestamp" })
     .notNull()
     .default(sql`(current_timestamp)`),
