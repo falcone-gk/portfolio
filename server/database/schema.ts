@@ -18,10 +18,10 @@ export const post = sqliteTable("posts", {
     .default(false),
   createdAt: integer("created_at", { mode: "timestamp" })
     .notNull()
-    .default(sql`(current_timestamp)`),
+    .default(sql`(unixepoch())`),
   updatedAt: integer("updated_at", { mode: "timestamp" })
     .notNull()
-    .default(sql`(current_timestamp)`),
+    .default(sql`(unixepoch())`),
 });
 
 // export const tagsToPosts = sqliteTable("tags_to_posts", {
