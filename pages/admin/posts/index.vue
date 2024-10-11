@@ -10,7 +10,7 @@
     <template #actions-data="{ row }">
       <div class="space-x-2">
         <UTooltip text="Go to post">
-          <UButton color="gray" icon="i-heroicons-eye-solid" size="xs" />
+          <UButton color="gray" icon="i-heroicons-eye-solid" size="xs" :to="`/blog/${row.slug}`" />
         </UTooltip>
 
         <UTooltip text="Edit post">

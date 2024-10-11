@@ -1,7 +1,7 @@
 <template>
-  <Typography tag="h1" variant="h1"> Blog </Typography>
+  <Typography tag="h1" variant="h1"> Blog</Typography>
   <div class="mt-10">
-    <DataLoading :data="posts" :loading="status !== 'success'">
+    <DataLoading :data="posts" :list="posts?.results" :loading="status !== 'success'">
       <template #data="{ data: posts }">
         <CommonGrid>
           <UiPostResume

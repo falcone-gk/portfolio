@@ -11,7 +11,7 @@
       @submit="submitLogin"
       class="flex flex-col gap-4"
     >
-      <UFormGroup label="Username o email" name="username" required>
+      <UFormGroup label="Username" name="username" required>
         <UInput
           v-model="state.username"
           placeholder="you@example.com"

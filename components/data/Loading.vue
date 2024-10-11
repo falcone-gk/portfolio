@@ -3,7 +3,7 @@
     <!--Loading Components section-->
     <div v-if="props.loading">
       <slot name="loading">
-        <DataLoadingMessage :message="props.loadingMessage"/>
+        <DataLoadingMessage :message="props.loadingMessage" />
       </slot>
     </div>
 
@@ -11,14 +11,14 @@
       <!--Error section-->
       <div v-if="!props.data">
         <slot name="error">
-          <DataError/>
+          <DataError />
         </slot>
       </div>
 
       <!--Data section-->
       <div v-else>
         <div v-if="isDataEmpty">
-          <DataEmpty :message="props.emptyMessage"/>
+          <DataEmpty :message="props.emptyMessage" />
         </div>
         <div v-else>
           <slot name="data" :data="props.data"></slot>
