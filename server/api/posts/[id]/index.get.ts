@@ -19,10 +19,8 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const post = {
+  return {
     ...data[0],
     tags: JSON.parse(data[0].tags) as string[],
   };
-
-  return post;
 });

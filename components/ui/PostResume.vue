@@ -25,7 +25,7 @@ import type { BlogPost } from "~/types";
 
 const props = defineProps<{
   post: BlogPost;
-  to: String;
+  to: string;
 }>();
 
 const { setCurrentPost } = usePosts();

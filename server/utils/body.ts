@@ -1,5 +1,5 @@
 import type { H3Event } from "h3";
-import type { ZodSchema, infer as ZodInfer } from "zod";
+import type { infer as ZodInfer, ZodSchema } from "zod";
 
 export const readTypeSafeData = async <
   Schema extends ZodSchema,
@@ -8,6 +8,5 @@ export const readTypeSafeData = async <
   event: Event,
   schema: Schema,
 ): Promise<ZodInfer<Schema>> => {
-  const _body = await readBody(event);
-  return _body;
+  return await readBody(event);
 };

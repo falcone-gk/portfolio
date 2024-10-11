@@ -114,7 +114,7 @@ const onSubmitNewPost = async () => {
 
   if (savedPost.value) {
     showNotification({
-      title: "Post saved succesfully",
+      title: "Post saved successfully",
       type: "success",
     });
   }

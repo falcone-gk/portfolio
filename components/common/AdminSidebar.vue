@@ -25,7 +25,7 @@
       <UButton
         class="w-full"
         icon="i-heroicons-arrow-right-end-on-rectangle-solid"
-        label="Cerrar sesión"
+        label="Logout"
         variant="outline"
         @click="onLogout"
       />
@@ -57,7 +57,7 @@ const darkMode = [
 const links = [adminLinks, publicLinks, darkMode];
 
 const colorMode = useColorMode();
-const selected = ref<boolean>(colorMode.preference === "dark" ? true : false);
+const selected = ref<boolean>(colorMode.preference === "dark");
 
 const toggleColorMode = () => {
   const colorSwitcher = {

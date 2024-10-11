@@ -26,22 +26,26 @@
           icon="i-heroicons-lock-closed-20-solid"
         />
       </UFormGroup>
-      <UButton type="submit" :loading="status === 'pending'" block
-        >Iniciar sesión</UButton
+      <UButton type="submit" :loading="status === 'pending'" block>
+        Login
+      </UButton
       >
     </UForm>
   </UCard>
 </template>
 
 <script setup lang="ts">
+import type { Form } from "#ui/types"
 import { loginSchema } from "~/schemas";
+import { z } from "zod";
 
 definePageMeta({
   layout: "centered",
 });
 
-const form = ref();
-const state = reactive({
+type LoginSchemaType = z.infer<typeof loginSchema>
+const form = ref<Form<LoginSchemaType>>();
+const state = reactive<LoginSchemaType>({
   username: "",
   password: "",
 });

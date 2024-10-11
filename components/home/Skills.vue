@@ -54,7 +54,6 @@
 </template>
 
 <script setup lang="ts">
-import type { DevSkills } from "~/types";
 
 const skills = {
   backend: [

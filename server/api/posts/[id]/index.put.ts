@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { eq, inArray } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { postSchema } from "~/schemas";
 import { slugify } from "~/utils/text";
 

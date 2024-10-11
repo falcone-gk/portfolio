@@ -20,7 +20,7 @@
 const props = defineProps({
   message: {
     type: String,
-    default: "¡Hubo un problema al cargar los datos!",
+    default: "¡There was a problem while loading the data!",
   },
 });
 </script>

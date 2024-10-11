@@ -6,7 +6,6 @@ export const useTags = async <T = Tag[]>({
   lazy = false,
 }: UseTagsOptions = {}) => {
   const nuxtApp = useNuxtApp();
-  // const tags = useState<Tag[] | null>("tags", () => null);
   const key = "keyTags";
 
   return useAsyncData<T>(

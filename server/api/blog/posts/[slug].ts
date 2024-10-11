@@ -19,11 +19,9 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const post = {
+  // Return the first post because we know there is only one
+  return {
     ...data[0],
     tags: JSON.parse(data[0].tags) as string[],
   };
-
-  // Return the first post because we know there is only one
-  return post;
 });

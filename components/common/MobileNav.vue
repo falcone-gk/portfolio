@@ -42,7 +42,7 @@ const isOpen = defineModel<boolean>("open", { required: true });
 
 // color mode
 const colorMode = useColorMode();
-const selected = ref<boolean>(colorMode.preference === "dark" ? true : false);
+const selected = ref<boolean>(colorMode.preference === "dark");
 const toggleColorMode = () => {
   const colorSwitcher = {
     light: "dark",

@@ -10,9 +10,6 @@ export default defineValidatedHandler(postSchema, async (event) => {
   await useDrizzle()
     .insert(tables.post)
     .values({
-      // title: data.title,
-      // description: data.description,
-      // body: data.body,
       ...data,
       slug: slugify(data.title),
       tags: JSON.stringify(data.tags),

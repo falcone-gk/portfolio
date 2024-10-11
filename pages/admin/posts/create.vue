@@ -8,11 +8,11 @@
         class="space-y-4"
       >
         <UFormGroup label="Title" name="title" required>
-          <UInput v-model="state.title"/>
+          <UInput v-model="state.title" />
         </UFormGroup>
 
         <UFormGroup label="Description" name="description" required>
-          <UInput v-model="state.description"/>
+          <UInput v-model="state.description" />
         </UFormGroup>
 
         <div class="flex gap-4 items-start lg:items-end lg:gap-12">
@@ -44,7 +44,7 @@
         </div>
 
         <UFormGroup label="Body" name="body" required>
-          <UTextarea :rows="20" class="h-full" v-model="state.body"/>
+          <UTextarea :rows="20" class="h-full" v-model="state.body" />
         </UFormGroup>
 
         <div class="flex justify-between">
@@ -63,11 +63,11 @@
 </template>
 
 <script setup lang="ts">
-import type {CorePost, Tag} from "~/types";
-import {postSchema} from "~/schemas";
+import type { CorePost, Tag } from "~/types";
+import { postSchema } from "~/schemas";
 
 // const { data: tags } = useLazyFetch("/api/tags");
-const {data: tags} = await useTags({lazy: true});
+const { data: tags } = await useTags({ lazy: true });
 
 const template = `# Simple
 
@@ -113,13 +113,13 @@ const {
   watch: false,
 });
 
-const {showNotification} = useNotification();
+const { showNotification } = useNotification();
 const onSubmitNewPost = async () => {
   await createPost();
 
   if (newPost.value) {
     showNotification({
-      title: "Post created succesfully",
+      title: "Post created successfully",
       type: "success",
     });
 

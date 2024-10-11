@@ -2,7 +2,6 @@
   <div>
     <UForm
       id="form"
-      ref="form"
       :schema="contactSchema"
       :state="state"
       @submit="onSubmit"
@@ -21,7 +20,7 @@
       <UButton
         type="submit"
         class="mt-4"
-        label="Enviar mensaje"
+        label="Send message"
         :loading="status === 'pending'"
       ></UButton>
     </UForm>
@@ -32,7 +31,7 @@
           class="text-primary-500"
           href="https://postmail.invotes.com"
           target="_blank"
-          >PostMail</a
+        >PostMail</a
         >
       </p>
     </div>
@@ -42,7 +41,6 @@
 <script setup lang="ts">
 import { contactSchema } from "~/schemas";
 
-const form = ref<HTMLFormElement>();
 const state = reactive({
   subject: "",
   email: "",
@@ -66,7 +64,7 @@ const onSubmit = async () => {
   if (data.value) {
     // success event
     showNotification({
-      title: "Message sent succesfully",
+      title: "Message sent successfully",
       message: "Your message was sent. Please wait for an answer.",
       type: "success",
     });
