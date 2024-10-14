@@ -66,7 +66,8 @@
 import type { CorePost, Tag } from "~/types";
 import { postSchema } from "~/schemas";
 
-const { data: tags } = await useTags();
+const { fetchTags } = useTags()
+const tags = await fetchTags()
 
 const state = reactive<CorePost>({
   title: "",

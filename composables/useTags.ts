@@ -1,23 +1,20 @@
-interface UseTagsOptions {
-  lazy?: boolean;
-}
-
-export const useTags = async <T = Tag[]>({
-  lazy = false,
-}: UseTagsOptions = {}) => {
-  const nuxtApp = useNuxtApp();
+export const useTags = () => {
   const key = "keyTags";
+  const currentTags = useState<Tag[] | null>(key, () => null)
 
-  return useAsyncData<T>(
-    key,
-    async () => {
-      const cachedData = nuxtApp.payload.data[key] || nuxtApp.static.data[key];
-      if (cachedData) {
-        return cachedData;
-      }
+  const { data: tags, status, execute: getTags } = useFetch("/api/tags", {
+    immediate: false,
+    watch: false
+  })
 
-      return await $fetch("/api/tags");
-    },
-    { lazy },
-  );
+  const fetchTags = async () => {
+    if (!currentTags.value) {
+      await getTags()
+      currentTags.value = tags.value
+    }
+
+    return currentTags
+  }
+
+  return { fetchTags, currentTags };
 };

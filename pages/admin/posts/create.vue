@@ -66,8 +66,8 @@
 import type { CorePost, Tag } from "~/types";
 import { postSchema } from "~/schemas";
 
-// const { data: tags } = useLazyFetch("/api/tags");
-const { data: tags } = await useTags({ lazy: true });
+const { fetchTags } = useTags()
+const tags = await fetchTags()
 
 const template = `# Simple
 

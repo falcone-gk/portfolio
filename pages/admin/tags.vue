@@ -1,10 +1,6 @@
 <template>
   <div class="px-4 py-6 space-y-16">
     <div>
-      <Typography class="mb-4" tag="h2" variant="h3">
-        Tags available
-      </Typography>
-
       <div class="flex flex-col-reverse md:flex-row gap-2 py-3.5">
         <div
           class="grid flex-1 auto-cols-auto grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-2"
@@ -19,7 +15,6 @@
       </div>
 
       <UTable
-        :loading="status !== 'success'"
         :columns="[
           { key: 'id', label: 'ID' },
           { key: 'name', label: 'Name' },
@@ -46,7 +41,7 @@
     >
       <UFormGroup label="New tag" name="tag" required>
         <div class="flex gap-2">
-          <UInput v-model="state.tag"/>
+          <UInput v-model="state.tag" />
           <UButton
             type="submit"
             label="Add new tag"
@@ -66,7 +61,8 @@ definePageMeta({
   title: "Tags",
 });
 
-const { data: tags, status } = await useTags({ lazy: true });
+const { fetchTags } = useTags();
+const tags = await fetchTags();
 
 // Filter data with pagination
 const q = ref("");
@@ -118,6 +114,12 @@ const {
   watch: false,
   method: "POST",
   body: state,
+  onResponse: ({ response }) => {
+    const newTag = response._data.data as Tag;
+    if (tags.value) {
+      tags.value.push(newTag);
+    }
+  },
 });
 
 const { showNotification } = useNotification();
