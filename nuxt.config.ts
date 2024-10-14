@@ -2,7 +2,13 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
-  modules: ["@nuxt/ui", "@nuxthub/core", "@nuxtjs/mdc", "nuxt-auth-utils"],
+  modules: [
+    "@nuxt/ui",
+    "@nuxthub/core",
+    "@nuxtjs/mdc",
+    "nuxt-auth-utils",
+    "@nuxt/eslint",
+  ],
   runtimeConfig: {
     postmailToken: process.env.POSTMAIL_TOKEN,
   },
