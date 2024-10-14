@@ -4,8 +4,8 @@
       <UForm
         :state="dataBody"
         :schema="postSchema"
-        @submit="onSubmitNewPost"
         class="space-y-4"
+        @submit="onSubmitNewPost"
       >
         <UFormGroup label="Title" name="title" required>
           <UInput v-model="state.title" />
@@ -18,6 +18,7 @@
         <div class="flex gap-4 items-start lg:items-end lg:gap-12">
           <UFormGroup label="Tags" name="tags">
             <USelectMenu
+              v-model="state.tags"
               searchable
               multiple
               searchable-placeholder="Search a tag..."
@@ -26,7 +27,6 @@
               :options="tags as Tag[]"
               option-attribute="name"
               by="id"
-              v-model="state.tags"
             />
           </UFormGroup>
 
@@ -44,7 +44,7 @@
         </div>
 
         <UFormGroup label="Body" name="body" required>
-          <UTextarea :rows="20" class="h-full" v-model="state.body" />
+          <UTextarea v-model="state.body" :rows="20" class="h-full" />
         </UFormGroup>
 
         <div class="flex justify-between">

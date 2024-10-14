@@ -17,7 +17,7 @@
         class="w-full h-full object-cover"
         :src="props.imageUrl"
         :alt="props.title"
-      />
+      >
     </template>
     <div>
       <Typography tag="h2" variant="h3" color="gray">
@@ -29,7 +29,7 @@
     </div>
 
     <template v-if="slots.customFooter" #footer>
-      <slot name="customFooter"></slot>
+      <slot name="customFooter"/>
     </template>
   </UCard>
 </template>

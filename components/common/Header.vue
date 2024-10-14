@@ -17,22 +17,22 @@
           <UButton
             class="md:hidden"
             icon="i-heroicons-bars-3"
-            @click="isOpen = !isOpen"
             color="gray"
             variant="ghost"
+            @click="isOpen = !isOpen"
           />
           <ColorScheme>
             <UButton
               class="hidden md:flex"
               :icon="iconColorMode"
-              @click="toggleColorMode"
               color="gray"
               variant="ghost"
+              @click="toggleColorMode"
             />
           </ColorScheme>
         </div>
       </div>
-      <CommonMobileNav :links="links" v-model:open="isOpen" />
+      <CommonMobileNav v-model:open="isOpen" :links="links" />
     </div>
   </div>
 </template>

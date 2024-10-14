@@ -48,7 +48,7 @@
         class="computer h-[400px] w-auto"
         src="/images/tech_computer.svg"
         alt="computer"
-      />
+      >
     </div>
   </div>
 </template>

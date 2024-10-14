@@ -68,7 +68,7 @@ const tags = await fetchTags();
 const q = ref("");
 const timeout = ref();
 const onInputSearch = (event: Event) => {
-  if (timeout) {
+  if (timeout.value) {
     clearTimeout(timeout.value);
   }
   timeout.value = setTimeout(async function () {

@@ -8,8 +8,8 @@
       ref="form"
       :schema="loginSchema"
       :state="state"
-      @submit="submitLogin"
       class="flex flex-col gap-4"
+      @submit="submitLogin"
     >
       <UFormGroup label="Username" name="username" required>
         <UInput
@@ -37,7 +37,7 @@
 <script setup lang="ts">
 import type { Form } from "#ui/types"
 import { loginSchema } from "~/schemas";
-import { z } from "zod";
+import type { z } from "zod";
 
 definePageMeta({
   layout: "centered",

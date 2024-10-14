@@ -18,7 +18,7 @@
           achieving high quality projects, to the expectations of my client.
         </Typography>
         <div class="flex gap-8 items-center">
-          <UButton @click="downloadCV" label="Download CV" size="xl" />
+          <UButton label="Download CV" size="xl" @click="downloadCV" />
           <UButton
             size="xl"
             label="Contact"
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="max-w-[350px]">
-      <img src="/images/profile.jpg" alt="profile" />
+      <img src="/images/profile.jpg" alt="profile" >
     </div>
   </div>
 </template>

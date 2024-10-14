@@ -1,34 +1,34 @@
 <template>
   <div>
-    <HomeSection class="mt-12 md:mt-0" id="hero">
+    <HomeSection id="hero" class="mt-12 md:mt-0">
       <HomeStart />
     </HomeSection>
 
     <HomeSection
-      title="About Me"
       id="about"
+      title="About Me"
       transition
       class="flex flex-col mx-auto max-w-[900px]"
     >
       <HomeAbout />
     </HomeSection>
 
-    <HomeSection title="Skills" id="skills" transition>
+    <HomeSection id="skills" title="Skills" transition>
       <HomeSkills />
     </HomeSection>
 
-    <HomeSection title="Experience" id="experience" is-center transition>
+    <HomeSection id="experience" title="Experience" is-center transition>
       <HomeExperience />
     </HomeSection>
 
-    <HomeSection title="Projects" id="projects" transition is-center>
+    <HomeSection id="projects" title="Projects" transition is-center>
       <HomeProjects />
     </HomeSection>
 
     <HomeSection
+      id="contact"
       class="flex mx-auto max-w-[700px]"
       title="Contact"
-      id="contact"
       is-center
     >
       <HomeContact />

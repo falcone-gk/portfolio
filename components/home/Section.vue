@@ -24,7 +24,7 @@
 const props = defineProps({
   title: {
     type: String,
-    required: false,
+    required: true,
   },
   id: {
     type: String,

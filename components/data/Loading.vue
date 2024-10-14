@@ -21,7 +21,7 @@
           <DataEmpty :message="props.emptyMessage" />
         </div>
         <div v-else>
-          <slot name="data" :data="props.data"></slot>
+          <slot name="data" :data="props.data"/>
         </div>
       </div>
 

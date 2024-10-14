@@ -1,18 +1,24 @@
 <template>
-  <Typography tag="h1" variant="h1"> Blog</Typography>
-  <div class="mt-10">
-    <DataLoading :data="posts" :list="posts?.results" :loading="status !== 'success'">
-      <template #data="{ data: posts }">
-        <CommonGrid>
-          <UiPostResume
-            v-for="(post, index) in posts.results"
-            :post="post"
-            :key="index"
-            :to="`/blog/${post.slug}`"
-          />
-        </CommonGrid>
-      </template>
-    </DataLoading>
+  <div>
+    <Typography tag="h1" variant="h1"> Blog</Typography>
+    <div class="mt-10">
+      <DataLoading
+        :data="posts"
+        :list="posts?.results"
+        :loading="status !== 'success'"
+      >
+        <template #data="{ data }">
+          <CommonGrid>
+            <UiPostResume
+              v-for="(post, index) in data.results"
+              :key="index"
+              :post="post"
+              :to="`/blog/${post.slug}`"
+            />
+          </CommonGrid>
+        </template>
+      </DataLoading>
+    </div>
   </div>
 </template>
 

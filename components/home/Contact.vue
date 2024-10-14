@@ -22,7 +22,7 @@
         class="mt-4"
         label="Send message"
         :loading="status === 'pending'"
-      ></UButton>
+      />
     </UForm>
     <div class="mt-4">
       <p class="text-sm">

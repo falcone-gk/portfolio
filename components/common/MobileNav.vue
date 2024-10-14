@@ -1,7 +1,7 @@
 <template>
   <USlideover
-    class="md:hidden"
     v-model="isOpen"
+    class="md:hidden"
     side="left"
     :ui="{
       width: 'relative w-5/6 max-w-md',
