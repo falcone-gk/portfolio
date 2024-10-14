@@ -5,7 +5,7 @@
     }"
   >
     <UForm
-      ref="form"
+      ref="login-form"
       :schema="loginSchema"
       :state="state"
       class="flex flex-col gap-4"
@@ -28,14 +28,13 @@
       </UFormGroup>
       <UButton type="submit" :loading="status === 'pending'" block>
         Login
-      </UButton
-      >
+      </UButton>
     </UForm>
   </UCard>
 </template>
 
 <script setup lang="ts">
-import type { Form } from "#ui/types"
+import type { Form } from "#ui/types";
 import { loginSchema } from "~/schemas";
 import type { z } from "zod";
 
@@ -43,8 +42,8 @@ definePageMeta({
   layout: "centered",
 });
 
-type LoginSchemaType = z.infer<typeof loginSchema>
-const form = ref<Form<LoginSchemaType>>();
+type LoginSchemaType = z.infer<typeof loginSchema>;
+const form = useTemplateRef<Form<LoginSchemaType>>("login-form");
 const state = reactive<LoginSchemaType>({
   username: "",
   password: "",
