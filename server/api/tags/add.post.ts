@@ -11,13 +11,14 @@ export default defineValidatedHandler(tagSchema, async (event) => {
   }
   const data = await readTypeSafeData(event, tagSchema);
 
-  await useDrizzle().insert(tables.tag).values({
+  const [newTag] = await useDrizzle().insert(tables.tag).values({
     name: data.tag,
-  });
+  }).returning();
 
   setResponseStatus(event, 201);
   return {
     status: "success",
     message: "Tag created successfully",
+    data: newTag
   };
 });
