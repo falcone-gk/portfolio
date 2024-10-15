@@ -21,7 +21,8 @@ export const defineValidatedHandler = <T extends EventHandlerRequest, D>(
 
       // Pass the validated data to the handler
       return await handler(event);
-    } catch (err) {
+    }
+    catch (err) {
       // Error handling
       return err;
     }

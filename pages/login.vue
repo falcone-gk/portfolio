@@ -34,9 +34,9 @@
 </template>
 
 <script setup lang="ts">
+import type { z } from "zod";
 import type { Form } from "#ui/types";
 import { loginSchema } from "~/schemas";
-import type { z } from "zod";
 
 definePageMeta({
   layout: "centered",
@@ -65,7 +65,8 @@ const submitLogin = async () => {
     const nextPage = route.query.next ? route.query.next : "/admin";
     await fetch();
     navigateTo(nextPage as string, { replace: true });
-  } else {
+  }
+  else {
     form.value?.setErrors([
       {
         message: "Wrong credentials.",

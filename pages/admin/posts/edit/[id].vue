@@ -66,8 +66,8 @@
 import type { CorePost, Tag } from "~/types";
 import { postSchema } from "~/schemas";
 
-const { fetchTags } = useTags()
-const tags = await fetchTags()
+const { fetchTags } = useTags();
+const tags = await fetchTags();
 
 const state = reactive<CorePost>({
   title: "",
@@ -87,7 +87,7 @@ const { data: post } = useLazyFetch(`/api/posts/${route.params.id}`, {
     state.isPublished = data.isPublished;
 
     if (tags.value) {
-      state.tags = tags.value.filter((tag) => data.tags.includes(tag.name));
+      state.tags = tags.value.filter(tag => data.tags.includes(tag.name));
     }
   },
 });
@@ -95,7 +95,7 @@ const { data: post } = useLazyFetch(`/api/posts/${route.params.id}`, {
 const dataBody = computed(() => {
   return {
     ...state,
-    tags: state.tags.map((tag) => tag.name),
+    tags: state.tags.map(tag => tag.name),
   };
 });
 const {

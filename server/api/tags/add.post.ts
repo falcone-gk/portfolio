@@ -19,6 +19,6 @@ export default defineValidatedHandler(tagSchema, async (event) => {
   return {
     status: "success",
     message: "Tag created successfully",
-    data: newTag
+    data: newTag,
   };
 });

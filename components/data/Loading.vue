@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!--Loading Components section-->
+    <!-- Loading Components section -->
     <div v-if="props.loading">
       <slot name="loading">
         <DataLoadingMessage :message="props.loadingMessage" />
@@ -8,14 +8,14 @@
     </div>
 
     <div v-else>
-      <!--Error section-->
+      <!-- Error section -->
       <div v-if="!props.data">
         <slot name="error">
           <DataError />
         </slot>
       </div>
 
-      <!--Data section-->
+      <!-- Data section -->
       <div v-else>
         <div v-if="isDataEmpty">
           <DataEmpty :message="props.emptyMessage" />
@@ -39,8 +39,8 @@ const props = defineProps<{
 
 const isDataEmpty = computed(() => {
   return (
-    (Array.isArray(props.data) && props.data.length === 0) ||
-    (props.list && props.list.length === 0)
+    (Array.isArray(props.data) && props.data.length === 0)
+    || (props.list && props.list.length === 0)
   );
 });
 </script>

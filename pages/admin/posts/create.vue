@@ -66,8 +66,8 @@
 import type { CorePost, Tag } from "~/types";
 import { postSchema } from "~/schemas";
 
-const { fetchTags } = useTags()
-const tags = await fetchTags()
+const { fetchTags } = useTags();
+const tags = await fetchTags();
 
 const template = `# Simple
 
@@ -99,7 +99,7 @@ const state = reactive<CorePost>({
 const dataBody = computed(() => {
   return {
     ...state,
-    tags: state.tags.map((tag) => tag.name),
+    tags: state.tags.map(tag => tag.name),
   };
 });
 const {

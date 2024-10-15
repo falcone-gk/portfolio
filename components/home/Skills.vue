@@ -4,7 +4,12 @@
       <p>I have experience with the following technologies and tools</p>
       <div class="space-y-10">
         <div>
-          <Typography class="mb-4" tag="h3" variant="h3" color="gray">
+          <Typography
+            class="mb-4"
+            tag="h3"
+            variant="h3"
+            color="gray"
+          >
             Backend Developer
           </Typography>
           <div class="flex gap-3 flex-wrap">
@@ -18,7 +23,12 @@
         </div>
 
         <div>
-          <Typography class="mb-4" tag="h3" variant="h3" color="gray">
+          <Typography
+            class="mb-4"
+            tag="h3"
+            variant="h3"
+            color="gray"
+          >
             Frontend Developer
           </Typography>
           <div class="flex gap-3 flex-wrap">
@@ -32,7 +42,12 @@
         </div>
 
         <div>
-          <Typography class="mb-4" tag="h3" variant="h3" color="gray">
+          <Typography
+            class="mb-4"
+            tag="h3"
+            variant="h3"
+            color="gray"
+          >
             Extra skills
           </Typography>
           <div class="flex gap-3 flex-wrap">
@@ -54,7 +69,6 @@
 </template>
 
 <script setup lang="ts">
-
 const skills = {
   backend: [
     { name: "Python", icon: "i-logos-python" },

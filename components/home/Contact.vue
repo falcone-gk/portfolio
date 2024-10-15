@@ -7,10 +7,20 @@
       @submit="onSubmit"
     >
       <div class="space-y-6">
-        <UFormGroup label="Subject" name="subject" type="text" required>
+        <UFormGroup
+          label="Subject"
+          name="subject"
+          type="text"
+          required
+        >
           <UInput v-model="state.subject" color="gray" />
         </UFormGroup>
-        <UFormGroup label="Email" name="email" type="email" required>
+        <UFormGroup
+          label="Email"
+          name="email"
+          type="email"
+          required
+        >
           <UInput v-model="state.email" color="gray" />
         </UFormGroup>
         <UFormGroup label="Message" name="message" required>
@@ -31,8 +41,7 @@
           class="text-primary-500"
           href="https://postmail.invotes.com"
           target="_blank"
-        >PostMail</a
-        >
+        >PostMail</a>
       </p>
     </div>
   </div>
@@ -71,7 +80,8 @@ const onSubmit = async () => {
     state.subject = "";
     state.email = "";
     state.message = "";
-  } else {
+  }
+  else {
     // error notification probably because of api limit per day
     showNotification({
       title: "Error sending the message",

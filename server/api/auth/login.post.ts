@@ -22,7 +22,8 @@ export default defineValidatedHandler(loginSchema, async (event) => {
       status: "success",
       message: "Login successful",
     };
-  } else {
+  }
+  else {
     throw createError({
       status: 401,
       statusMessage: "Wrong credentials",

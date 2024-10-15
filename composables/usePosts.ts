@@ -25,7 +25,7 @@ export const usePosts = () => {
     if (!data) return;
 
     const slug = data.slug;
-    if (!arrayViewedPosts.value.find((post) => post.slug === slug)) {
+    if (!arrayViewedPosts.value.find(post => post.slug === slug)) {
       arrayViewedPosts.value.push({
         slug,
         data,
@@ -50,16 +50,17 @@ export const usePosts = () => {
   );
 
   const fetchPost = async (slug: string) => {
-    if (!arrayViewedPosts.value.find((post) => post.slug === slug)) {
+    if (!arrayViewedPosts.value.find(post => post.slug === slug)) {
       // Not in the array so we need to fetch it
       currentPostInformation.value.slug = slug;
       await getPost();
       currentPostInformation.value.data = post.value;
       addViewedPost(currentPostInformation.value.data);
-    } else if (currentPostInformation.value.slug !== slug) {
+    }
+    else if (currentPostInformation.value.slug !== slug) {
       // It is in the array but the slug is different so we need to look in the array
       const currentPost = arrayViewedPosts.value.find(
-        (post) => post.slug === slug,
+        post => post.slug === slug,
       ) as CurrentPostData;
       currentPostInformation.value.slug = slug;
       currentPostInformation.value.data = currentPost?.data;

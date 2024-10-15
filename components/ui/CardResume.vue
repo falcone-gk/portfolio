@@ -29,7 +29,7 @@
     </div>
 
     <template v-if="slots.customFooter" #footer>
-      <slot name="customFooter"/>
+      <slot name="customFooter" />
     </template>
   </UCard>
 </template>

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <Typography tag="h1" variant="h1"> Blog</Typography>
+    <Typography tag="h1" variant="h1">
+      Blog
+    </Typography>
     <div class="mt-10">
       <DataLoading
         :data="posts"

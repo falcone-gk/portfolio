@@ -17,11 +17,21 @@
       <HomeSkills />
     </HomeSection>
 
-    <HomeSection id="experience" title="Experience" is-center transition>
+    <HomeSection
+      id="experience"
+      title="Experience"
+      is-center
+      transition
+    >
       <HomeExperience />
     </HomeSection>
 
-    <HomeSection id="projects" title="Projects" transition is-center>
+    <HomeSection
+      id="projects"
+      title="Projects"
+      transition
+      is-center
+    >
       <HomeProjects />
     </HomeSection>
 

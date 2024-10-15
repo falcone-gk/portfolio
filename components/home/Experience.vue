@@ -52,7 +52,8 @@ onMounted(() => {
           const elementIndex = Number(target.dataset.index);
           if (elementIndex % 2 === 0) {
             entry.target.classList.add("show-from-left");
-          } else {
+          }
+          else {
             entry.target.classList.add("show-from-right");
           }
         }

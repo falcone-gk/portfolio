@@ -1,7 +1,13 @@
 <template>
   <div class="w-full">
     <div class="mb-4 mx-auto max-w-[1000px]">
-      <UButton size="sm" color="gray" icon="i-mdi-chevron-left" variant="link" to="/blog">
+      <UButton
+        size="sm"
+        color="gray"
+        icon="i-mdi-chevron-left"
+        variant="link"
+        to="/blog"
+      >
         Go Back
       </UButton>
     </div>
@@ -21,14 +27,13 @@ if (!post) {
   throw showError({
     statusCode: 404,
     statusMessage: "Post does not exist",
-  })
+  });
 }
 
 useSeoMeta({
   title: post?.title,
   description: post?.description,
   ogTitle: post?.title,
-  ogDescription: post?.description
-})
-
+  ogDescription: post?.description,
+});
 </script>
