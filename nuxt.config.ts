@@ -1,7 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: "2024-04-03",
-  devtools: { enabled: true },
   modules: [
     "@nuxt/ui",
     "@nuxthub/core",
@@ -9,26 +7,6 @@ export default defineNuxtConfig({
     "nuxt-auth-utils",
     "@nuxt/eslint",
   ],
-  runtimeConfig: {
-    postmailToken: process.env.POSTMAIL_TOKEN,
-  },
-  $production: {
-    runtimeConfig: {
-      public: {
-        auth: true,
-      },
-      basicAuth: {
-        enabled: true,
-        username: process.env.ADMIN_USER,
-        password: process.env.ADMIN_PASSWORD,
-      },
-    },
-    nitro: {
-      experimental: {
-        wasm: true,
-      },
-    },
-  },
   $development: {
     runtimeConfig: {
       public: {
@@ -48,27 +26,32 @@ export default defineNuxtConfig({
       remote: true,
     },
   },
-  css: ["~/assets/css/main.css"],
-  ui: {
-    icons: ["logos"],
+  $production: {
+    runtimeConfig: {
+      public: {
+        auth: true,
+      },
+      basicAuth: {
+        enabled: true,
+        username: process.env.ADMIN_USER,
+        password: process.env.ADMIN_PASSWORD,
+      },
+    },
+    nitro: {
+      experimental: {
+        wasm: true,
+      },
+    },
   },
   imports: {
     dirs: ["types/*.d.ts"],
   },
-  routeRules: {
-    // "/": { prerender: true },
-    "/admin/**": { ssr: false },
-    "/login": { ssr: false },
-    "/api/**": { cors: true },
-  },
+  devtools: { enabled: true },
+  css: ["~/assets/css/main.css"],
   router: {
     options: {
       scrollBehaviorType: "smooth",
     },
-  },
-  hub: {
-    database: true,
-    // blob: true,
   },
   mdc: {
     highlight: {
@@ -77,12 +60,37 @@ export default defineNuxtConfig({
       theme: "catppuccin-macchiato",
     },
   },
+  ui: {
+    icons: ["logos"],
+  },
+  runtimeConfig: {
+    postmailToken: process.env.POSTMAIL_TOKEN,
+  },
+  routeRules: {
+    // "/": { prerender: true },
+    "/admin/**": { ssr: false },
+    "/login": { ssr: false },
+    "/api/**": { cors: true },
+  },
+  compatibilityDate: "2024-04-03",
+  hub: {
+    database: true,
+    // blob: true,
+  },
   vite: {
     build: {
       rollupOptions: {
         external: [
           "shiki/onig.wasm", // !Important: externalize the wasm import
         ],
+      },
+    },
+  },
+  eslint: {
+    config: {
+      stylistic: {
+        semi: true,
+        quotes: "double",
       },
     },
   },
