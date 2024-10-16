@@ -1,12 +1,7 @@
 <template>
-  <div>
+  <div class="md:min-w-[65ch]">
     <div v-if="!props.isPreview">
-      <UTextarea
-        v-model="fullBody"
-        class="md:min-w-[65ch]"
-        :rows="35"
-        readonly
-      />
+      <UTextarea v-model="fullBody" :rows="35" readonly />
     </div>
     <div v-else>
       <MDC v-if="post.body.trim()" v-slot="{ data, body }" :value="fullBody">
@@ -56,8 +51,7 @@ const props = defineProps({
   },
   isPreview: {
     type: Boolean,
-    required: false,
-    default: true,
+    default: false,
   },
   isArticle: {
     type: Boolean,

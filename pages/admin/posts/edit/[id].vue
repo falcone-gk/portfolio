@@ -53,12 +53,16 @@
             label="Save post"
             :loading="savedPostStatus === 'pending'"
           />
+          <UToggle
+            v-model="preview"
+            on-icon="i-heroicons-eye"
+            off-icon="i-heroicons-eye-slash"
+            size="lg"
+          />
         </div>
       </UForm>
     </div>
-    <CommonBlogPost
-      :post="post"
-    />
+    <CommonBlogPost :post="post" :is-preview="preview" />
   </div>
 </template>
 
@@ -76,6 +80,8 @@ const state = reactive<CorePost>({
   body: "",
   isPublished: false,
 });
+
+const preview = ref(false);
 
 const route = useRoute();
 const { data: post } = useLazyFetch(`/api/posts/${route.params.id}`, {

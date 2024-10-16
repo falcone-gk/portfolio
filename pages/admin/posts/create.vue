@@ -53,12 +53,16 @@
             label="Create post"
             :loading="newPostStatus === 'pending'"
           />
+          <UToggle
+            v-model="preview"
+            on-icon="i-heroicons-eye"
+            off-icon="i-heroicons-eye-slash"
+            size="lg"
+          />
         </div>
       </UForm>
     </div>
-    <CommonBlogPost
-      :post="state"
-    />
+    <CommonBlogPost :post="state" :is-preview="preview" />
   </div>
 </template>
 
@@ -95,6 +99,8 @@ const state = reactive<CorePost>({
   body: template,
   isPublished: false,
 });
+
+const preview = ref(false);
 
 const dataBody = computed(() => {
   return {

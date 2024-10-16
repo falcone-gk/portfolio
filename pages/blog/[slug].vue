@@ -11,7 +11,12 @@
         Go Back
       </UButton>
     </div>
-    <CommonBlogPost class="mx-auto" :post="post as BlogPost" is-article />
+    <CommonBlogPost
+      class="mx-auto"
+      :post="post as BlogPost"
+      is-article
+      is-preview
+    />
   </div>
 </template>
 
