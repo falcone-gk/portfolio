@@ -5,42 +5,16 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps({
-  tag: {
-    type: String,
-    default: "p",
-    validator: (value: string) => {
-      return ["h1", "h2", "h3", "h4", "h5", "h6", "p", "span", "a"].includes(
-        value,
-      );
-    },
-  },
-  variant: {
-    type: String,
-    default: "body",
-    validator: (value: string) => {
-      return [
-        "body",
-        "h1",
-        "h2",
-        "h3",
-        "big",
-        "bigger",
-        "biggest",
-        "small",
-        "smaller",
-      ].includes(value);
-    },
-  },
-  color: {
-    type: String,
-    default: "primary",
-    validator: (value: string) => {
-      return ["primary", "white", "info", "danger", "gray", "black"].includes(
-        value,
-      );
-    },
-  },
+interface Props {
+  tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "a";
+  variant?: "body" | "h1" | "h2" | "h3" | "big" | "bigger" | "biggest" | "small" | "smaller";
+  color?: "primary" | "white" | "info" | "danger" | "gray" | "black";
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  tag: "p",
+  variant: "body",
+  color: "primary",
 });
 
 const computedTag = computed(() => {
