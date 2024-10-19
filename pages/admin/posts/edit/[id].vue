@@ -62,7 +62,7 @@
         </div>
       </UForm>
     </div>
-    <CommonBlogPost :post="post" :is-preview="preview" />
+    <CommonBlogPost :post="state" :is-preview="preview" />
   </div>
 </template>
 
