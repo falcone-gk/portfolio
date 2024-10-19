@@ -56,12 +56,13 @@ export default defineNuxtConfig({
   mdc: {
     highlight: {
       highlighter: "shiki",
-      langs: ["vue", "ts", "js", "py"],
+      langs: ["vue", "ts", "js", "py", "html", "css", "json", "bash"],
       theme: "catppuccin-macchiato",
     },
   },
   ui: {
     icons: ["logos"],
+    safelistColors: ["primary", "orange", "yellow", "blue", "emerald"],
   },
   runtimeConfig: {
     postmailToken: process.env.POSTMAIL_TOKEN,
