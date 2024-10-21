@@ -1,5 +1,16 @@
 <template>
-  <UCard :ui="{ rounded: '' }">
+  <UCard
+    :ui="{
+      base: 'flex flex-col',
+      rounded: '',
+      header: {
+        base: 'h-48',
+      },
+      footer: {
+        base: 'mt-auto',
+      },
+    }"
+  >
     <template #header>
       <Typography tag="h2" variant="h3" color="gray">
         {{ props.post.title }}
