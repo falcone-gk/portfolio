@@ -1,11 +1,13 @@
+interface Notification {
+  title?: string;
+  message?: string;
+  type: "success" | "error" | "warning" | "info";
+}
+
 export const useNotification = () => {
   const toast = useToast();
 
-  const showNotification = (information: {
-    title?: string;
-    message?: string;
-    type: "success" | "error" | "warning" | "info";
-  }) => {
+  const showNotification = (information: Notification) => {
     const info = reactive(information);
     switch (info.type) {
       case "success":
