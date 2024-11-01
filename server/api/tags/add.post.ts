@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { isServer } from "~/server/utils/mode";
 
 const tagSchema = z.object({
   tag: z.string().min(1),

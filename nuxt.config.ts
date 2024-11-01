@@ -47,7 +47,6 @@ export default defineNuxtConfig({
     dirs: ["types/*.d.ts"],
   },
   devtools: { enabled: true },
-  css: ["~/assets/css/main.css"],
   router: {
     options: {
       scrollBehaviorType: "smooth",
@@ -73,6 +72,9 @@ export default defineNuxtConfig({
     "/login": { ssr: false },
     "/api/**": { cors: true },
   },
+  future: {
+    compatibilityVersion: 4,
+  },
   compatibilityDate: "2024-04-03",
   hub: {
     database: true,
@@ -94,5 +96,8 @@ export default defineNuxtConfig({
         quotes: "double",
       },
     },
+  },
+  tailwindcss: {
+    cssPath: "~/assets/css/main.css",
   },
 });
