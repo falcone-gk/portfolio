@@ -18,13 +18,22 @@
           achieving high quality projects, to the expectations of my client.
         </Typography>
         <div class="flex gap-8 items-center">
-          <UButton label="Download CV" size="xl" @click="downloadCV" />
+          <UButton
+            label="Download CV"
+            size="xl"
+            icon="i-heroicons-document-text-20-solid"
+            trailing
+            @click="downloadCV"
+          />
           <UButton
             size="xl"
             label="Contact"
+            color="blue"
             variant="outline"
-            icon="i-heroicons-envelope-solid"
-            :to="{ path: '/', hash: '#contact' }"
+            icon="i-logos-linkedin-icon"
+            trailing
+            to="https://www.linkedin.com/in/enzo-falcon-50b638208/"
+            target="_blank"
           />
         </div>
       </div>

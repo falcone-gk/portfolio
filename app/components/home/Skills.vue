@@ -1,7 +1,7 @@
 <template>
-  <div class="flex gap-24">
-    <div class="space-y-12">
-      <p>I have experience with the following technologies and tools</p>
+  <div class="text-center flex gap-24">
+    <div class="mx-auto space-y-12">
+      <p>I have experience with the following technologies and tools:</p>
       <div class="space-y-10">
         <div>
           <Typography
@@ -12,7 +12,7 @@
           >
             Backend Developer
           </Typography>
-          <div class="flex gap-3 flex-wrap">
+          <div class="flex justify-center gap-3 flex-wrap">
             <div
               v-for="(tool, index) in skills.backend"
               :key="`backend-${index}`"
@@ -31,7 +31,7 @@
           >
             Frontend Developer
           </Typography>
-          <div class="flex gap-3 flex-wrap">
+          <div class="flex justify-center gap-3 flex-wrap">
             <div
               v-for="(tool, index) in skills.frontend"
               :key="`frontend-${index}`"
@@ -50,7 +50,7 @@
           >
             Extra skills
           </Typography>
-          <div class="flex gap-3 flex-wrap">
+          <div class="flex justify-center gap-3 flex-wrap">
             <div v-for="(tool, index) in skills.extra" :key="`extra-${index}`">
               <UiBadge :icon="tool.icon" :label="tool.name" />
             </div>
@@ -58,13 +58,13 @@
         </div>
       </div>
     </div>
-    <div class="hidden lg:block">
+    <!-- <div class="hidden lg:block">
       <img
         class="computer h-[400px] w-auto"
         src="/images/tech_computer.svg"
         alt="computer"
       >
-    </div>
+    </div> -->
   </div>
 </template>
 

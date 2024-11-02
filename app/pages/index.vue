@@ -13,7 +13,12 @@
       <HomeAbout />
     </HomeSection>
 
-    <HomeSection id="skills" title="Skills" transition>
+    <HomeSection
+      id="skills"
+      title="Skills"
+      transition
+      is-center
+    >
       <HomeSkills />
     </HomeSection>
 
@@ -35,14 +40,14 @@
       <HomeProjects />
     </HomeSection>
 
-    <HomeSection
+    <!-- <HomeSection
       id="contact"
       class="flex mx-auto max-w-[700px]"
       title="Contact"
       is-center
     >
       <HomeContact />
-    </HomeSection>
+    </HomeSection> -->
   </div>
 </template>
 
