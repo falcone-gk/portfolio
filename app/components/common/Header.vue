@@ -13,13 +13,20 @@
         <nav class="hidden md:flex items-center">
           <UHorizontalNavigation :links="navLinks" />
         </nav>
-        <div class="flex my-auto">
+        <div class="flex flex-row-reverse md:flex-row items-center gap-2">
           <UButton
             class="md:hidden"
             icon="i-heroicons-bars-3"
             color="gray"
             variant="ghost"
             @click="isOpen = !isOpen"
+          />
+          <UButton
+            color="white"
+            variant="ghost"
+            icon="i-simple-icons-github"
+            to="https://github.com/falcone-gk/portfolio"
+            target="_blank"
           />
           <ColorScheme>
             <UButton

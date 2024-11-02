@@ -17,7 +17,7 @@
           Full Stack Web Developer with a strong commitment to my work,
           achieving high quality projects, to the expectations of my client.
         </Typography>
-        <div class="flex gap-8 items-center">
+        <div class="flex gap-8 items-center flex-wrap">
           <UButton
             label="Download CV"
             size="xl"
@@ -29,10 +29,18 @@
             size="xl"
             label="Contact"
             color="blue"
-            variant="outline"
-            icon="i-logos-linkedin-icon"
+            icon="i-simple-icons-linkedin"
             trailing
             to="https://www.linkedin.com/in/enzo-falcon-50b638208/"
+            target="_blank"
+          />
+          <UButton
+            size="xl"
+            label="Github"
+            color="white"
+            icon="i-simple-icons-github"
+            trailing
+            to="https://github.com/falcone-gk"
             target="_blank"
           />
         </div>

@@ -60,7 +60,7 @@ export default defineNuxtConfig({
     },
   },
   ui: {
-    icons: ["logos"],
+    icons: ["simple-icons"],
     safelistColors: ["primary", "orange", "yellow", "blue", "emerald"],
   },
   runtimeConfig: {

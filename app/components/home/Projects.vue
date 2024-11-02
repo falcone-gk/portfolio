@@ -18,7 +18,7 @@
             <UButton
               v-if="project.githubUrl"
               label="Repository"
-              icon="i-logos-github-icon"
+              icon="i-simple-icons-github"
               :to="project.githubUrl"
               target="_blank"
             />

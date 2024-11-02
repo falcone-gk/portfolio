@@ -1,7 +1,9 @@
 <template>
   <div class="text-center flex gap-24">
     <div class="mx-auto space-y-12">
-      <p>I have experience with the following technologies and tools:</p>
+      <Typography variant="big" color="gray">
+        I have experience with the following technologies and tools:
+      </Typography>
       <div class="space-y-10">
         <div>
           <Typography
@@ -71,25 +73,25 @@
 <script setup lang="ts">
 const skills = {
   backend: [
-    { name: "Python", icon: "i-logos-python" },
-    { name: "Django", icon: "i-logos-django-icon" },
-    { name: "Postgresql", icon: "i-logos-postgresql" },
-    { name: "Redis", icon: "i-logos-redis" },
+    { name: "Python", icon: "i-simple-icons-python" },
+    { name: "Django", icon: "i-simple-icons-django" },
+    { name: "Postgresql", icon: "i-simple-icons-postgresql" },
+    { name: "Redis", icon: "i-simple-icons-redis" }, // TODO: Add redis icon
   ],
   frontend: [
-    { name: "Vue 3", icon: "i-logos-vue" },
-    { name: "Nuxt 3", icon: "i-logos-nuxt-icon" },
-    { name: "Tailwind", icon: "i-logos-tailwindcss-icon" },
-    { name: "HTML", icon: "i-logos-html-5" },
-    { name: "JavaScript", icon: "i-logos-javascript" },
-    { name: "CSS", icon: "i-logos-css-3" },
-    { name: "Typescript", icon: "i-logos-typescript-icon" },
+    { name: "Vue 3", icon: "i-simple-icons-vuedotjs" },
+    { name: "Nuxt 3", icon: "i-simple-icons-nuxtdotjs" },
+    { name: "Tailwind", icon: "i-simple-icons-nuxtdotjs" },
+    { name: "HTML", icon: "i-simple-icons-html5" },
+    { name: "JavaScript", icon: "i-simple-icons-javascript" },
+    { name: "CSS", icon: "i-simple-icons-css3" },
+    { name: "Typescript", icon: "i-simple-icons-typescript" },
   ],
   extra: [
-    { name: "Docker", icon: "i-logos-docker-icon" },
-    { name: "Linux", icon: "i-logos-linux-tux" },
-    { name: "Git", icon: "i-logos-git-icon" },
-    { name: "Nginx", icon: "i-logos-nginx" },
+    { name: "Docker", icon: "i-simple-icons-docker" },
+    { name: "Linux", icon: "i-simple-icons-linux" },
+    { name: "Git", icon: "i-simple-icons-git" },
+    { name: "Nginx", icon: "i-simple-icons-nginx" },
   ],
 };
 </script>
