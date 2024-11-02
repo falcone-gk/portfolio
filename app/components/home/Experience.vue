@@ -3,10 +3,12 @@
     <ul>
       <li
         v-for="(item, index) in timelineItems"
+        ref="expContent"
         :key="`experience-item-${index}`"
+        :data-index="index"
         class="mb-20 before:shadow-[0_0_0_3px] before:bg-primary-400 before:shadow-primary-200 dark:shadow-primary-400 dark:before:bg-primary-600"
       >
-        <div ref="itemsContent" :data-index="index" class="content opacity-0">
+        <div class="expDesc content opacity-0">
           <Typography tag="h3" variant="h3" color="gray">
             {{ item.title }}
           </Typography>
@@ -24,9 +26,7 @@
           </div>
         </div>
         <div
-          ref="itemsContent"
-          :data-index="index + 1"
-          class="opacity-0 time text-white bg-primary-400 shadow-[0_0_0_3px] shadow-primary-200 dark:shadow-primary-400 dark:bg-primary-600"
+          class="expDate opacity-0 time text-white bg-primary-400 shadow-[0_0_0_3px] shadow-primary-200 dark:shadow-primary-400 dark:bg-primary-600"
         >
           <Typography tag="h3" color="gray">
             {{ item.date }}
@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 const { data: timelineItems } = await useFetch("/experience");
-const contentRefs = useTemplateRef<HTMLElement[]>("itemsContent");
+const contentRefs = useTemplateRef<HTMLElement[]>("expContent");
 
 onMounted(() => {
   const observer = new IntersectionObserver(
@@ -48,19 +48,23 @@ onMounted(() => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const target = entry.target as HTMLElement;
-          if (!target.dataset.index) return;
           const elementIndex = Number(target.dataset.index);
+          const expDesc = target.querySelector("div.expDesc");
+          const expDate = target.querySelector("div.expDate");
+
           if (elementIndex % 2 === 0) {
-            entry.target.classList.add("show-from-left");
+            expDesc?.classList.add("show-from-left");
+            expDate?.classList.add("show-from-right");
           }
           else {
-            entry.target.classList.add("show-from-right");
+            expDesc?.classList.add("show-from-right");
+            expDate?.classList.add("show-from-left");
           }
         }
       });
     },
     {
-      threshold: 0.9,
+      threshold: 0.5,
     },
   );
   if (contentRefs.value) {
