@@ -15,7 +15,7 @@
       <div class="space-y-12 mt-4">
         <Typography color="gray" variant="big">
           Full Stack Web Developer with a strong commitment to my work,
-          achieving high quality projects, to the expectations of my client.
+          achieving high quality projects.
         </Typography>
         <div class="flex gap-8 items-center flex-wrap">
           <UButton

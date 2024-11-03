@@ -14,7 +14,7 @@
           <span class="text-primary-500">Python</span>. This inspired me to
           learn more about programming, specifically in the field of Economics.
           Later, I decided to create a website for my brother's business, which
-          is how I learned
+          is how I started learning
           <span class="text-primary-500">Web Development</span> with
           <span class="text-primary-500">Django</span>.
         </Typography>
