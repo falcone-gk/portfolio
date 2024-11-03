@@ -34,15 +34,17 @@
             to="https://www.linkedin.com/in/enzo-falcon-50b638208/"
             target="_blank"
           />
-          <UButton
-            size="xl"
-            label="Github"
-            color="white"
-            icon="i-simple-icons-github"
-            trailing
-            to="https://github.com/falcone-gk"
-            target="_blank"
-          />
+          <UTooltip text="My Github profile">
+            <UButton
+              size="xl"
+              label="Github"
+              color="white"
+              icon="i-simple-icons-github"
+              trailing
+              to="https://github.com/falcone-gk"
+              target="_blank"
+            />
+          </UTooltip>
         </div>
       </div>
     </div>

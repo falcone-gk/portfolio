@@ -21,13 +21,15 @@
             variant="ghost"
             @click="isOpen = !isOpen"
           />
-          <UButton
-            color="white"
-            variant="ghost"
-            icon="i-simple-icons-github"
-            to="https://github.com/falcone-gk/portfolio"
-            target="_blank"
-          />
+          <UTooltip text="Website repo">
+            <UButton
+              color="white"
+              variant="ghost"
+              icon="i-simple-icons-github"
+              to="https://github.com/falcone-gk/portfolio"
+              target="_blank"
+            />
+          </UTooltip>
           <ColorScheme>
             <UButton
               class="hidden md:flex"
