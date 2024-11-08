@@ -38,13 +38,21 @@ const projects = [
     imageUrl: "/images/projects/edukar.webp",
     visitUrl: "https://aedukar.com/",
   },
+  // {
+  //   title: "MascotAmigos",
+  //   description:
+  //     "Ecommerce demo where I participated with web scraping superpet.pe and implemented the data scraped in the frontend.",
+  //   imageUrl: "/images/projects/mascotamigo.webp",
+  //   visitUrl: "https://ecommerce-demo-weld.vercel.app",
+  //   githubUrl: "https://github.com/javierrh2812/ecommerce-demo",
+  // },
   {
-    title: "MascotAmigos",
+    title: "Demo Tenant Admin",
     description:
-      "Ecommerce demo where I participated with web scraping superpet.pe and implemented the data scraped in the frontend.",
-    imageUrl: "/images/projects/mascotamigo.webp",
-    visitUrl: "https://ecommerce-demo-weld.vercel.app",
-    githubUrl: "https://github.com/javierrh2812/ecommerce-demo",
+      "Web application that allows you to manage the costs, services and rent of tenants of a house",
+    imageUrl: "/images/projects/tenant-admin.webp",
+    visitUrl: "https://tenant-admin.vercel.app/login",
+    githubUrl: "https://github.com/falcone-gk/tenant-admin",
   },
 ];
 </script>
