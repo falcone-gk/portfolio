@@ -4,7 +4,7 @@
       <UButton
         size="sm"
         color="gray"
-        icon="i-mdi-chevron-left"
+        icon="i-heroicons-chevron-left-16-solid"
         variant="link"
         to="/blog"
       >
