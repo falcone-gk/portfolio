@@ -5,10 +5,16 @@
 </template>
 
 <script lang="ts" setup>
+import { twMerge } from "tailwind-merge";
+
+type Tag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "a";
+type Variant = "body" | "h1" | "h2" | "h3" | "big" | "bigger" | "biggest" | "small" | "smaller";
+type ColorState = "primary" | "white" | "info" | "danger" | "gray" | "black";
+
 interface Props {
-  tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "a";
-  variant?: "body" | "h1" | "h2" | "h3" | "big" | "bigger" | "biggest" | "small" | "smaller";
-  color?: "primary" | "white" | "info" | "danger" | "gray" | "black";
+  tag?: Tag;
+  variant?: Variant;
+  color?: ColorState;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -25,7 +31,7 @@ const computedTag = computed(() => {
 });
 
 const variantClasses = computed(() => {
-  const classLookup = {
+  const classLookup: Record<Variant, string> = {
     h1: "text-2xl font-bold sm:text-3xl md:text-4xl",
     h2: "text-xl font-bold sm:text-2xl md:text-3xl",
     h3: "text-lg font-bold sm:text-xl md:text-2xl",
@@ -36,11 +42,11 @@ const variantClasses = computed(() => {
     small: "text-sm",
     smaller: "text-xs",
   };
-  return classLookup[props.variant as keyof typeof classLookup];
+  return classLookup[props.variant];
 });
 
 const colorClasses = computed(() => {
-  const classLookup = {
+  const classLookup: Record<ColorState, string> = {
     primary: "text-primary-500 dark:text-primary-400",
     danger: "text-red-500 dark:text-red-400",
     gray: "text-black dark:text-white",
@@ -48,10 +54,10 @@ const colorClasses = computed(() => {
     white: "text-white",
     black: "text-black",
   };
-  return classLookup[props.color as keyof typeof classLookup];
+  return classLookup[props.color];
 });
 
 const classes = computed(() => {
-  return variantClasses.value + " " + colorClasses.value;
+  return twMerge(variantClasses.value, colorClasses.value);
 });
 </script>
