@@ -20,9 +20,9 @@
                 color="gray"
                 tag="p"
               >
-                By: <span class="text-primary-500">Enzo Falcón</span><br>
+                By: <span class="text-primary-600 dark:text-primary-400">Enzo Falcón</span><br>
                 Last updated on:
-                <span class="text-primary-500">{{
+                <span class="text-primary-600 dark:text-primary-400">{{
                   formatISOToDate(new Date(data.updatedAt).toISOString())
                 }}</span>
               </Typography>

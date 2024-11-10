@@ -26,7 +26,7 @@
           </div>
         </div>
         <div
-          class="expDate opacity-0 time text-white bg-primary-400 shadow-[0_0_0_3px] shadow-primary-200 dark:shadow-primary-400 dark:bg-primary-600"
+          class="expDate opacity-0 time text-white bg-primary-300 shadow-[0_0_0_3px] shadow-primary-400 dark:shadow-primary-400 dark:bg-primary-600"
         >
           <Typography tag="h3" color="gray">
             {{ item.date }}

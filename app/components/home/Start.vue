@@ -8,8 +8,8 @@
           variant="biggest"
           color="gray"
         >
-          Hi! I am <span class="text-primary-500">Enzo</span> and I am a
-          <span class="text-primary-500">Web Developer</span>
+          Hi! I am <span class="text-primary-500 dark:text-primary-400">Enzo</span> and I am a
+          <span class="text-primary-500 dark:text-primary-400">Web Developer</span>
         </Typography>
       </div>
       <div class="space-y-12 mt-4">

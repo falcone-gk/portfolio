@@ -2,7 +2,7 @@
   <NuxtLoadingIndicator />
   <UModal />
   <UNotifications />
-  <NuxtLayout class="bg-gray-50 dark:bg-gray-950">
+  <NuxtLayout class="bg-background dark:bg-gray-950">
     <NuxtPage />
   </NuxtLayout>
 </template>

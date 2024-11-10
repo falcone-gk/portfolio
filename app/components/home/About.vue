@@ -4,19 +4,19 @@
       <div class="hidden md:block">
         <UIcon
           name="i-heroicons-code-bracket-solid"
-          class="bg-primary-500 h-16 w-16"
+          class="bg-primary-400 dark-primary-600 h-16 w-16"
         />
       </div>
       <div>
         <Typography variant="big" color="gray">
           I studied Economics; however, during my last semester at university, I
           discovered the world of software development with
-          <span class="text-primary-500">Python</span>. This inspired me to
+          <span class="font-bold text-primary-600 dark:text-primary-400">Python</span>. This inspired me to
           learn more about programming, specifically in the field of Economics.
           Later, I decided to create a website for my brother's business, which
           is how I started learning
-          <span class="text-primary-500">Web Development</span> with
-          <span class="text-primary-500">Django</span>.
+          <span class="font-bold text-primary-600 dark:text-primary-400">Web Development</span> with
+          <span class="font-bold text-primary-600 dark:text-primary-400">Django</span>.
         </Typography>
       </div>
     </div>

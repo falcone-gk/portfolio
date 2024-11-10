@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Typography tag="h1" variant="h1">
+    <Typography tag="h1" variant="h1" color="gray">
       Blog
     </Typography>
     <div class="mt-10">
