@@ -11,5 +11,8 @@ export default defineAppConfig({
     horizontalNavigation: {
       before: "before:rounded-none before:h-8 before:top-2",
     },
+    verticalNavigation: {
+      base: "before:rounded-none",
+    },
   },
 });

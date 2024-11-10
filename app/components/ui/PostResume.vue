@@ -16,8 +16,8 @@
         {{ props.post.title }}
       </Typography>
     </template>
-    <div class="flex flex-col h-56 justify-between">
-      <div class="h-52 overflow-y-scroll">
+    <div class="flex flex-col h-48 md:h-56 justify-between">
+      <div class="h-44 md:h-52 overflow-y-scroll">
         <p>{{ props.post.description }}</p>
       </div>
       <div>
