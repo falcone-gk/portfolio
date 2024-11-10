@@ -15,6 +15,7 @@
     <template #header>
       <img
         class="w-full h-full object-cover"
+        loading="lazy"
         :src="props.imageUrl"
         :alt="props.title"
       >

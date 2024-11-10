@@ -51,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div class="max-w-[350px]">
+    <div class="max-w-[300px] md:min-w-[350px]">
       <img src="/images/profile.webp" alt="profile">
     </div>
   </div>

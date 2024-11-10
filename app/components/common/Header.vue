@@ -35,6 +35,9 @@
             />
           </UTooltip>
           <ColorScheme>
+            <template #placeholder>
+              <div class="h-6 w-8" />
+            </template>
             <UButton
               class="hidden md:flex"
               arial-label="Toggle dark mode"
