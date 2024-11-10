@@ -40,7 +40,7 @@
             </template>
             <UButton
               class="hidden md:flex"
-              arial-label="Toggle dark mode"
+              aria-label="Toggle dark mode"
               :icon="iconColorMode"
               color="gray"
               variant="ghost"
