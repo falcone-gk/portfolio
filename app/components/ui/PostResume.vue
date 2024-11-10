@@ -30,6 +30,7 @@
     <template #footer>
       <UButton
         label="Read more"
+        :aria-label="`Read the post ${props.post.title}`"
         variant="outline"
         :to="props.to"
         @click="onClickReadMore"
