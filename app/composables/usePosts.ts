@@ -2,7 +2,7 @@ import type { BlogPost } from "~/types";
 
 interface CurrentPostData {
   slug: string | null;
-  data: BlogPost | null;
+  data: BlogPost | undefined;
 }
 
 export const usePosts = () => {
@@ -11,7 +11,7 @@ export const usePosts = () => {
     () => {
       return {
         slug: null,
-        data: null,
+        data: undefined,
       };
     },
   );
@@ -21,7 +21,7 @@ export const usePosts = () => {
     () => [],
   );
 
-  const addViewedPost = (data: BlogPost | null) => {
+  const addViewedPost = (data: BlogPost | undefined) => {
     if (!data) return;
 
     const slug = data.slug;

@@ -13,7 +13,7 @@
     </div>
     <CommonBlogPost
       class="mx-auto"
-      :post="post as BlogPost"
+      :post="post"
       is-article
       is-preview
     />
@@ -21,8 +21,6 @@
 </template>
 
 <script lang="ts" setup>
-import type { BlogPost } from "~/types";
-
 const route = useRoute();
 const slug = route.params.slug;
 const { fetchPost } = usePosts();

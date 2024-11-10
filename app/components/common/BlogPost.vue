@@ -23,9 +23,7 @@
                 By: <span class="text-primary-500">Enzo Falcón</span><br>
                 Last updated on:
                 <span class="text-primary-500">{{
-                  data.updatedAt
-                    ? new Date(data.updatedAt).toLocaleDateString()
-                    : new Date().toLocaleDateString()
+                  formatISOToDate(new Date(data.updatedAt).toISOString())
                 }}</span>
               </Typography>
             </div>
@@ -83,7 +81,7 @@ const header = computed(() => {
 title: ${props.post.title}
 description: ${props.post.description}
 tags: ${stringifyTags.value}
-updatedAt: ${"updatedAt" in props.post ? props.post.updatedAt : ""}
+updatedAt: ${"updatedAt" in props.post ? props.post.updatedAt : new Date()}
 ---`;
 });
 const fullBody = computed(() => {

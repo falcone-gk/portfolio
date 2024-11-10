@@ -7,12 +7,12 @@ export default defineEventHandler(async (event) => {
   });
   const { slug } = await getValidatedRouterParams(event, postSlugSchema.parse);
 
-  const data = await useDrizzle()
-    .select()
-    .from(tables.post)
-    .where(eq(tables.post.slug, slug));
+  const db = useDrizzle();
+  const post = await db.query.post.findFirst({
+    where: eq(tables.post.slug, slug),
+  });
 
-  if (data.length === 0) {
+  if (!post) {
     throw createError({
       status: 404,
       statusMessage: "Post slug not found.",
@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
 
   // Return the first post because we know there is only one
   return {
-    ...data[0],
-    tags: JSON.parse(data[0].tags) as string[],
+    ...post,
+    tags: JSON.parse(post.tags) as string[],
   };
 });

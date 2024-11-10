@@ -4,7 +4,7 @@
       base: 'flex flex-col',
       rounded: '',
       header: {
-        base: 'h-48',
+        base: 'lg:h-48 md:h-40',
       },
       footer: {
         base: 'mt-auto',
@@ -16,8 +16,15 @@
         {{ props.post.title }}
       </Typography>
     </template>
-    <div>
-      <p>{{ props.post.description }}</p>
+    <div class="flex flex-col h-56 justify-between">
+      <div class="h-52 overflow-y-scroll">
+        <p>{{ props.post.description }}</p>
+      </div>
+      <div>
+        <Typography color="gray">
+          Last updated: <span class="text-primary-600 dark:text-primary-400">{{ formatISOToDate(props.post.updatedAt) }}</span>
+        </Typography>
+      </div>
     </div>
 
     <template #footer>
