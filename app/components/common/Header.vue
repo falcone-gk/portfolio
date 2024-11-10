@@ -16,7 +16,7 @@
         <div class="flex flex-row-reverse md:flex-row items-center gap-2">
           <UButton
             class="md:hidden"
-            aria-control="mobile-menu"
+            aria-controls="mobile-menu"
             aria-label="Open bar"
             :aria-expanded="isOpen ? 'true' : 'false'"
             icon="i-heroicons-bars-3"

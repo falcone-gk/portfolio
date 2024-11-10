@@ -47,6 +47,14 @@ export default defineNuxtConfig({
     dirs: ["types/*.d.ts"],
   },
   devtools: { enabled: true },
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: "en",
+      },
+      link: [{ rel: "icon", type: "image/png", href: "/favicon.ico" }],
+    },
+  },
   router: {
     options: {
       scrollBehaviorType: "smooth",
