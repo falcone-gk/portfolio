@@ -16,6 +16,9 @@
         <div class="flex flex-row-reverse md:flex-row items-center gap-2">
           <UButton
             class="md:hidden"
+            aria-control="mobile-menu"
+            aria-label="Open bar"
+            :aria-expanded="isOpen ? 'true' : 'false'"
             icon="i-heroicons-bars-3"
             color="gray"
             variant="ghost"
@@ -24,6 +27,7 @@
           <UTooltip text="Website repo">
             <UButton
               color="white"
+              aria-label="Link to this website Github repository"
               variant="ghost"
               icon="i-simple-icons-github"
               to="https://github.com/falcone-gk/portfolio"
@@ -33,6 +37,7 @@
           <ColorScheme>
             <UButton
               class="hidden md:flex"
+              arial-label="Toggle dark mode"
               :icon="iconColorMode"
               color="gray"
               variant="ghost"
@@ -41,7 +46,13 @@
           </ColorScheme>
         </div>
       </div>
-      <CommonMobileNav v-model:open="isOpen" :links="links" />
+      <CommonMobileNav
+        id="mobile-menu"
+        v-model:open="isOpen"
+        :aria-hidden="isOpen ? 'false' : 'true'"
+        role="menu"
+        :links="links"
+      />
     </div>
   </div>
 </template>

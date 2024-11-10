@@ -60,13 +60,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="hidden lg:block">
-      <img
-        class="computer h-[400px] w-auto"
-        src="/images/tech_computer.svg"
-        alt="computer"
-      >
-    </div> -->
   </div>
 </template>
 
@@ -95,9 +88,3 @@ const skills = {
   ],
 };
 </script>
-
-<style scoped>
-.computer {
-  mask-image: radial-gradient(250px at center, black, transparent);
-}
-</style>

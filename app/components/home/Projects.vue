@@ -10,6 +10,7 @@
           <div class="flex gap-2 flex-wrap">
             <UButton
               label="Visit"
+              :aria-label="`Visit ${project.title}`"
               variant="outline"
               :to="project.visitUrl"
               target="_blank"
@@ -18,6 +19,7 @@
             <UButton
               v-if="project.githubUrl"
               label="Repository"
+              :aria-label="`Visit ${project.title} Github repository`"
               icon="i-simple-icons-github"
               :to="project.githubUrl"
               target="_blank"

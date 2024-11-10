@@ -20,6 +20,7 @@
         <div class="flex gap-8 items-center flex-wrap">
           <UButton
             label="Download CV"
+            aria-label="Download curriculum"
             size="xl"
             icon="i-heroicons-document-text-20-solid"
             trailing
@@ -28,6 +29,7 @@
           <UButton
             size="xl"
             label="Contact"
+            aria-label="Link to Enzo Falcon Linkedin"
             color="blue"
             icon="i-simple-icons-linkedin"
             trailing
@@ -38,6 +40,7 @@
             <UButton
               size="xl"
               label="Github"
+              aria-label="Link to Enzo Falcon Github"
               color="white"
               icon="i-simple-icons-github"
               trailing
