@@ -8,7 +8,8 @@
       <Typography
         class="home-section-h2"
         tag="h2"
-        variant="bigger"
+        color="gray"
+        variant="h1"
         :class="{ 'text-center': props.isCenter }"
       >
         {{ props.title }}

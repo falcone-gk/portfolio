@@ -8,7 +8,7 @@
         />
       </div>
       <div>
-        <Typography variant="h3" color="gray">
+        <Typography variant="big" color="gray">
           I studied Economics; however, during my last semester at university, I
           discovered the world of software development with
           <span class="text-primary-500">Python</span>. This inspired me to

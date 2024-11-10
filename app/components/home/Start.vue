@@ -3,7 +3,7 @@
     <div>
       <div>
         <Typography
-          class="lg:leading-[140px]"
+          class="lg:leading-[140px] font-bold"
           tag="h1"
           variant="biggest"
           color="gray"
