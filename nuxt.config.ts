@@ -66,7 +66,7 @@ export default defineNuxtConfig({
     postmailToken: process.env.POSTMAIL_TOKEN,
   },
   routeRules: {
-    // "/": { prerender: true },
+    "/": { prerender: true },
     "/admin/**": { ssr: false },
     "/login": { ssr: false },
     "/api/**": { cors: true },
