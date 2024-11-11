@@ -85,7 +85,6 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   hub: {
     database: true,
-    // blob: true,
   },
   vite: {
     build: {
