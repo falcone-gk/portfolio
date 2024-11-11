@@ -35,12 +35,12 @@
 
 <script setup lang="ts">
 const adminLinks = [
-  {
-    label: "Dashboard",
-    icon: "i-heroicons-presentation-chart-bar-solid",
-    to: "/admin",
-    exact: true,
-  },
+  // {
+  //   label: "Dashboard",
+  //   icon: "i-heroicons-presentation-chart-bar-solid",
+  //   to: "/admin",
+  //   exact: true,
+  // },
   { label: "Posts", icon: "i-heroicons-pencil-solid", to: "/admin/posts" },
   { label: "Tags", icon: "i-heroicons-tag-solid", to: "/admin/tags" },
 ];

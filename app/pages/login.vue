@@ -62,7 +62,7 @@ const submitLogin = async () => {
   await execute();
 
   if (data.value) {
-    const nextPage = route.query.next ? route.query.next : "/admin";
+    const nextPage = route.query.next ? route.query.next : "/admin/posts";
     await fetch();
     navigateTo(nextPage as string, { replace: true });
   }
