@@ -64,7 +64,7 @@ useSeoMeta({
 
 defineShortcuts({
   ctrl_shift_k: {
-    handler: () => navigateTo("/admin"),
+    handler: () => navigateTo("/admin/posts"),
   },
 });
 </script>
