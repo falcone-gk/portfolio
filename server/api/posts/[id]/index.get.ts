@@ -1,13 +1,13 @@
 import { z } from "zod";
 import { eq } from "drizzle-orm";
 
-export default defineEventHandler(async (event) => {
+export default defineAdminResponseHandler(async (event) => {
   const postIdSchema = z.object({
     id: z.number({ coerce: true }).positive().int(),
   });
   const { id } = await getValidatedRouterParams(event, postIdSchema.parse);
 
-  const data = await useDrizzle()
+  const data = await db
     .select()
     .from(tables.post)
     .where(eq(tables.post.id, id));

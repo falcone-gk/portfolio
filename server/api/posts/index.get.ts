@@ -1,7 +1,7 @@
 import { count, desc } from "drizzle-orm";
 import { paginationSchema } from "~/schemas";
 
-export default defineEventHandler(async (event) => {
+export default defineAdminResponseHandler(async (event) => {
   const { page, pageSize } = await getValidatedQuery(
     event,
     paginationSchema.parse,
@@ -9,8 +9,8 @@ export default defineEventHandler(async (event) => {
   const offset = (page - 1) * pageSize;
 
   const [[totalPosts], posts] = await Promise.all([
-    useDrizzle().select({ count: count() }).from(tables.post),
-    useDrizzle()
+    db.select({ count: count() }).from(tables.post),
+    db
       .select()
       .from(tables.post)
       .orderBy(desc(tables.post.id))

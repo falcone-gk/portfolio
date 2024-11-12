@@ -1,14 +1,16 @@
-import { drizzle } from "drizzle-orm/d1";
-
+import { drizzle } from "drizzle-orm/libsql";
+import { createClient } from "@libsql/client";
 import * as schema from "../database/schema";
-
-export { sql, eq, and, or } from "drizzle-orm";
 
 export const tables = schema;
 
-export function useDrizzle() {
-  return drizzle(hubDatabase(), { schema });
-}
+const config = useRuntimeConfig();
+const turso = createClient({
+  url: config.turso.databaseUrl!,
+  authToken: config.turso.authToken,
+});
+
+export const db = drizzle(turso, { schema });
 
 export type Post = typeof schema.post.$inferSelect;
 export type Tag = typeof schema.tag.$inferSelect;

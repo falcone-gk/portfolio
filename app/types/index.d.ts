@@ -1,3 +1,19 @@
+import type { z } from "zod";
+import type { loginSchema } from "~/schemas";
+
+export interface UserSession {
+  username: string;
+  isAdmin: boolean;
+}
+
+declare module "h3" {
+  interface H3EventContext {
+    user: UserSession;
+  }
+}
+
+export type LoginForm = z.input<typeof loginSchema>;
+
 export interface Skill {
   name: string;
   icon: string;

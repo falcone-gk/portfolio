@@ -1,13 +1,10 @@
+import type { z } from "zod";
 import { postSchema } from "~/schemas";
 import { slugify } from "~/utils/text";
 
-export default defineValidatedHandler(postSchema, async (event) => {
-  if (isServer()) {
-    await requireUserSession(event);
-  }
-  const data = await readTypeSafeData(event, postSchema);
-
-  await useDrizzle()
+export default defineAdminResponseHandler(async (event) => {
+  const data = event.context.body as z.input<typeof postSchema>;
+  await db
     .insert(tables.post)
     .values({
       ...data,
@@ -20,4 +17,4 @@ export default defineValidatedHandler(postSchema, async (event) => {
     status: "success",
     message: "Post created successfully",
   };
-});
+}, postSchema);

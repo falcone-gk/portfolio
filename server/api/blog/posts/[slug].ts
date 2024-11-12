@@ -7,7 +7,6 @@ export default defineEventHandler(async (event) => {
   });
   const { slug } = await getValidatedRouterParams(event, postSlugSchema.parse);
 
-  const db = useDrizzle();
   const post = await db.query.post.findFirst({
     where: eq(tables.post.slug, slug),
   });

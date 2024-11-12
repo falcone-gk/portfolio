@@ -9,9 +9,8 @@ export default defineEventHandler(async (event) => {
   const offset = (page - 1) * pageSize;
 
   const [[totalPosts], posts] = await Promise.all([
-    useDrizzle().select({ count: count() }).from(tables.post),
-    useDrizzle()
-      .select()
+    db.select({ count: count() }).from(tables.post),
+    db.select()
       .from(tables.post)
       .where(eq(tables.post.isPublished, true))
       .orderBy(desc(tables.post.id))

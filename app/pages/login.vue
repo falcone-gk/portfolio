@@ -26,7 +26,7 @@
           icon="i-heroicons-lock-closed-20-solid"
         />
       </UFormGroup>
-      <UButton type="submit" :loading="status === 'pending'" block>
+      <UButton type="submit" :loading="pendingAuth" block>
         Login
       </UButton>
     </UForm>
@@ -34,45 +34,33 @@
 </template>
 
 <script setup lang="ts">
-import type { z } from "zod";
 import type { Form } from "#ui/types";
+import type { LoginForm } from "~/types";
 import { loginSchema } from "~/schemas";
 
 definePageMeta({
   layout: "centered",
 });
 
-type LoginSchemaType = z.infer<typeof loginSchema>;
-const form = useTemplateRef<Form<LoginSchemaType>>("login-form");
-const state = reactive<LoginSchemaType>({
+const form = useTemplateRef<Form<LoginForm>>("login-form");
+const state = reactive<LoginForm>({
   username: "",
   password: "",
 });
 
-const { data, status, execute } = useLazyFetch("/api/auth/login", {
-  method: "POST",
-  immediate: false,
-  watch: false,
-  body: state,
-});
-
-const { fetch } = useUserSession();
-const route = useRoute();
+const { login, isLoggedIn, pendingAuth } = useAuth();
 const submitLogin = async () => {
-  await execute();
-
-  if (data.value) {
-    const nextPage = route.query.next ? route.query.next : "/admin/posts";
-    await fetch();
-    navigateTo(nextPage as string, { replace: true });
-  }
-  else {
+  await login(state);
+  if (!isLoggedIn.value) {
     form.value?.setErrors([
       {
         message: "Wrong credentials.",
         path: "password",
       },
     ]);
+  }
+  else {
+    navigateTo("/admin");
   }
 };
 </script>

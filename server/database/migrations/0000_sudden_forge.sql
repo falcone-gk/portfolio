@@ -10,9 +10,8 @@ CREATE TABLE `posts` (
 	`updated_at` integer DEFAULT (unixepoch()) NOT NULL
 );
 --> statement-breakpoint
+CREATE UNIQUE INDEX `posts_title_unique` ON `posts` (`title`);--> statement-breakpoint
 CREATE TABLE `tags` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`name` text NOT NULL
 );
---> statement-breakpoint
-CREATE UNIQUE INDEX `posts_title_unique` ON `posts` (`title`);

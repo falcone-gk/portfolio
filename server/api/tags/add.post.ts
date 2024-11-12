@@ -4,13 +4,10 @@ const tagSchema = z.object({
   tag: z.string().min(1),
 });
 
-export default defineValidatedHandler(tagSchema, async (event) => {
-  if (isServer()) {
-    await requireUserSession(event);
-  }
-  const data = await readTypeSafeData(event, tagSchema);
+export default defineAdminResponseHandler(async (event) => {
+  const data = event.context.body as z.input<typeof tagSchema>;
 
-  const [newTag] = await useDrizzle().insert(tables.tag).values({
+  const [newTag] = await db.insert(tables.tag).values({
     name: data.tag,
   }).returning();
 
@@ -20,4 +17,4 @@ export default defineValidatedHandler(tagSchema, async (event) => {
     message: "Tag created successfully",
     data: newTag,
   };
-});
+}, tagSchema);

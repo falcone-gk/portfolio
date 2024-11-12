@@ -1,32 +1,35 @@
 import { loginSchema } from "~/schemas";
 
-export default defineValidatedHandler(loginSchema, async (event) => {
-  const data = await readTypeSafeData(event, loginSchema);
+export default defineEventHandler(async (event) => {
+  const body = await readValidatedBody(event, loginSchema.safeParse);
 
-  const config = useRuntimeConfig(event);
-  const { username, password } = config.basicAuth;
-
-  if (data.username === username && data.password === password) {
-    await setUserSession(event, {
-      user: {
-        login: data.username,
-        // isAdmin: true,
-      },
-      secure: {
-        apiToken: data.password,
-      },
-      loggedInAt: new Date(),
-    });
-
-    return {
-      status: "success",
-      message: "Login successful",
-    };
-  }
-  else {
+  if (!body.success) {
     throw createError({
-      status: 401,
-      statusMessage: "Wrong credentials",
+      status: 400,
+      statusMessage: "Invalid request body",
+      message: JSON.stringify(body.error.issues),
+      data: body.error.issues,
     });
   }
+
+  const { username, password } = body.data;
+  const config = useRuntimeConfig();
+  const adminUsername = config.basicAuth.username;
+  const adminPassword = config.basicAuth.password;
+
+  const isPasswordCorrect = await verifyPassword(password, adminPassword);
+  if (!isPasswordCorrect || username !== adminUsername) {
+    throw createError({ statusCode: 401, message: "Invalid username or password" });
+  }
+
+  const publicUserData = {
+    username: username,
+    isAdmin: true,
+  };
+  await createUserSession(event, publicUserData);
+
+  return {
+    status: "success",
+    data: publicUserData,
+  };
 });
