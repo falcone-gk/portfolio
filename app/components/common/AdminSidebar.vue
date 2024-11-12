@@ -67,7 +67,7 @@ const toggleColorMode = () => {
   colorMode.preference = colorSwitcher[colorMode.value as "light" | "dark"];
 };
 
-const { execute: logout } = useFetch("/api/auth/logout", { method: "POST" });
+const { logout } = useAuth();
 const onLogout = async () => {
   await logout();
   navigateTo("/");

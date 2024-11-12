@@ -60,7 +60,7 @@ const submitLogin = async () => {
     ]);
   }
   else {
-    navigateTo("/admin");
+    navigateTo("/admin/posts");
   }
 };
 </script>
