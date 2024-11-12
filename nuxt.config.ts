@@ -21,11 +21,11 @@ export default defineNuxtConfig({
         auth: true,
       },
     },
-    nitro: {
-      experimental: {
-        wasm: true,
-      },
-    },
+    // nitro: {
+    //   experimental: {
+    //     wasm: true,
+    //   },
+    // },
   },
   imports: {
     dirs: ["types/*.d.ts"],
@@ -77,15 +77,15 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   compatibilityDate: "2024-04-03",
-  vite: {
-    build: {
-      rollupOptions: {
-        external: [
-          "shiki/onig.wasm", // !Important: externalize the wasm import
-        ],
-      },
-    },
-  },
+  // vite: {
+  //   build: {
+  //     rollupOptions: {
+  //       external: [
+  //         "shiki/onig.wasm", // !Important: externalize the wasm import
+  //       ],
+  //     },
+  //   },
+  // },
   eslint: {
     config: {
       stylistic: {
